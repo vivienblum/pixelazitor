@@ -9,17 +9,20 @@ import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PixelateComponent } from './pixelate/pixelate.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "upload", component: UploadComponent }
+  { path: "upload", component: UploadComponent },
+  { path: "pixelate", component: PixelateComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UploadComponent
+    UploadComponent,
+    PixelateComponent
   ],
   imports: [
     RouterModule.forRoot(
