@@ -1,20 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UploadComponent } from './upload/upload.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PixelateComponent } from './pixelate/pixelate.component';
+import { CanvasPixelateComponent } from './canvas-pixelate/canvas-pixelate.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "upload", component: UploadComponent },
-  { path: "pixelate", component: PixelateComponent }
+  { path: "pixelate", component: CanvasPixelateComponent }
 ]
 
 @NgModule({
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     UploadComponent,
-    PixelateComponent
+    PixelateComponent,
+    CanvasPixelateComponent
   ],
   imports: [
     RouterModule.forRoot(
