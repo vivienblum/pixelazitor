@@ -3,7 +3,8 @@ import {
   OnInit,
   ElementRef,
   ViewChild,
-  AfterViewInit
+  AfterViewInit,
+  Input
 } from "@angular/core"
 
 @Component({
@@ -13,6 +14,7 @@ import {
 })
 export class CanvasPixelateComponent implements OnInit {
   @ViewChild("canvas") public canvas: ElementRef
+  @Input() amount: number
 
   private cx: CanvasRenderingContext2D
   constructor() {}
@@ -34,7 +36,7 @@ export class CanvasPixelateComponent implements OnInit {
       canvasEl.height = imageObj.height
       // this.cx.drawImage(imageObj, 0, 0);
       this.cx = this.disableSmoothRendering(this.cx)
-      this.pixelateImage(imageObj, 0.09)
+      this.pixelateImage(imageObj, this.amount)
     }.bind(this)
 
     // Test
