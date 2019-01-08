@@ -16,8 +16,8 @@ export class CanvasPixelateComponent implements OnInit {
 
   ngAfterViewInit() {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
-
-    this.cx = canvasEl.getContext('2d');
+    // canvas
+    this.cx = canvasEl.getContext('2d')
 
     // Image
     var imageObj = new Image();
@@ -26,8 +26,33 @@ export class CanvasPixelateComponent implements OnInit {
     imageObj.onload = function() {
       canvasEl.width = imageObj.width;
       canvasEl.height = imageObj.height;
-      this.cx.drawImage(imageObj, 0, 0);
+      // this.cx.drawImage(imageObj, 0, 0);
+      this.cx = this.disableSmoothRendering(this.cx)
+      this.pixelateImage(imageObj, 0.09)
     }.bind(this);
 
+    // Test
+
+    // this.image.src = this.canvas.toDataURL('image/png');
+  }
+
+  disableSmoothRendering(cx) {
+    cx.webkitImageSmoothingEnabled = false
+    cx.mozImageSmoothingEnabled = false
+    cx.msImageSmoothingEnabled = false
+    cx.imageSmoothingEnabled = false
+    return cx
+  }
+
+  pixelateImage(image, amount) {
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+    // const amount = 0.2
+    var w = canvasEl.width * (amount <= 0 ? 0.01 : amount);
+    var h = canvasEl.height * (amount <= 0 ? 0.01 : amount);
+    
+    // render smaller image
+    this.cx.drawImage(image, 0, 0, w, h);
+    // stretch the smaller image
+    this.cx.drawImage(canvasEl, 0, 0, w, h, 0, 0, image.width, image.height);
   }
 }
