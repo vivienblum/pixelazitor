@@ -4,7 +4,9 @@ import {
   ElementRef,
   ViewChild,
   AfterViewInit,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from "@angular/core"
 
 @Component({
@@ -23,6 +25,8 @@ export class CanvasPixelateComponent implements OnInit {
       this._amount = amount
       if (this.cx) {
         this.pixelateImage(this._image, this._amount)
+        const imagePixelate = this.canvas.nativeElement.toDataURL("image/png")
+        this.handleImageChange.emit(imagePixelate)
       }
     }
   }
@@ -43,6 +47,9 @@ export class CanvasPixelateComponent implements OnInit {
       }.bind(this)
     }
   }
+
+  @Output()
+  handleImageChange: EventEmitter<HTMLImageElement> = new EventEmitter()
 
   private cx: CanvasRenderingContext2D
   constructor() {}

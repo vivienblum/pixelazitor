@@ -8,7 +8,7 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <ng-template matStepLabel>Pixelate</ng-template>
-    <app-pixelate [image]="imageToPixelate"></app-pixelate>
+    <app-pixelate (next)="next($event, 2)" [image]="imageToPixelate"></app-pixelate>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>

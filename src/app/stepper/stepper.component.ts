@@ -25,6 +25,8 @@ export class StepperComponent implements OnInit {
         break
       case 2:
         this.nextButton2 = true
+        this.imagePixelate = image
+        // TODO send to server to match
         break
       case 3:
         this.nextButton3 = true
@@ -32,5 +34,7 @@ export class StepperComponent implements OnInit {
       default:
         break
     }
+    console.log("1:", this.nextButton1)
+    console.log("2:", this.nextButton2)
   }
 }
