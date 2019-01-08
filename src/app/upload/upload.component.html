@@ -1,0 +1,3 @@
+<h2>Upload your picture</h2>
+<input type="file" (change)="onImageSelected($event)" accept="image/png, image/jpeg">
+<img *ngIf="imageSrc" [src]="imageSrc">
