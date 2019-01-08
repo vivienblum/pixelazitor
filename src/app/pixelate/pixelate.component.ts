@@ -12,8 +12,8 @@ import { switchMap, takeUntil, pairwise } from "rxjs/operators"
 })
 export class PixelateComponent implements OnInit {
   amountForm: FormGroup
-  amount: number = 1
-  private _image: HTMLImageElement
+  amount: number
+  private _image: HTMLImageElement = null
 
   @Output() next: EventEmitter<HTMLImageElement> = new EventEmitter()
 
@@ -43,5 +43,9 @@ export class PixelateComponent implements OnInit {
 
   onImageChange(image) {
     this.next.emit(image)
+  }
+
+  hasImage(): boolean {
+    return this._image !== null
   }
 }
