@@ -3,9 +3,11 @@ import { NgModule } from "@angular/core"
 import { RouterModule, Routes } from "@angular/router"
 import { ServiceWorkerModule } from "@angular/service-worker"
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
 
 import { MatButtonModule } from "@angular/material/button"
 import { MatSliderModule } from "@angular/material/slider"
+import { MatStepperModule } from "@angular/material/stepper"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -13,10 +15,11 @@ import { UploadComponent } from "./upload/upload.component"
 import { environment } from "../environments/environment"
 import { PixelateComponent } from "./pixelate/pixelate.component"
 import { CanvasPixelateComponent } from "./canvas-pixelate/canvas-pixelate.component"
+import { StepperComponent } from "./stepper/stepper.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "upload", component: UploadComponent },
+  { path: "upload", component: StepperComponent },
   { path: "pixelate", component: PixelateComponent }
 ]
 
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
     HomeComponent,
     UploadComponent,
     PixelateComponent,
-    CanvasPixelateComponent
+    CanvasPixelateComponent,
+    StepperComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
@@ -36,8 +40,10 @@ const appRoutes: Routes = [
     }),
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     MatButtonModule,
-    MatSliderModule
+    MatSliderModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-  height: 100%;
-}
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-body {
-  // background-color: #ffe082;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
+// html {
+//   height: 100%;
+// }
+//
+// body {
+//   // background-color: #ffe082;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-between;
+// }
