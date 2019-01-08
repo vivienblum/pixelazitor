@@ -13,6 +13,12 @@ import { switchMap, takeUntil, pairwise } from "rxjs/operators"
 export class PixelateComponent implements OnInit {
   amountForm: FormGroup
   amount: number = 1
+  private _image: HTMLImageElement
+
+  @Input()
+  set image(image: HTMLImageElement) {
+    this._image = image
+  }
 
   constructor(private fb: FormBuilder) {
     this.amountForm = this.fb.group({
@@ -23,6 +29,10 @@ export class PixelateComponent implements OnInit {
   ngOnInit() {}
 
   ngAfterViewInit() {}
+
+  get image() {
+    return this._image
+  }
 
   onUpdate() {
     this.amount = this.amountForm.value.amount
