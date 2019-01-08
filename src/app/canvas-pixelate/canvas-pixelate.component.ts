@@ -1,35 +1,41 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit
+} from "@angular/core"
 
 @Component({
-  selector: 'app-canvas-pixelate',
-  templateUrl: './canvas-pixelate.component.html',
-  styles: ['./canvas-pixelate.component.scss']
+  selector: "app-canvas-pixelate",
+  templateUrl: "./canvas-pixelate.component.html",
+  styles: ["./canvas-pixelate.component.scss"]
 })
 export class CanvasPixelateComponent implements OnInit {
-  @ViewChild('canvas') public canvas: ElementRef;
+  @ViewChild("canvas") public canvas: ElementRef
 
-  private cx: CanvasRenderingContext2D;
-  constructor() { }
+  private cx: CanvasRenderingContext2D
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
-    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
     // canvas
-    this.cx = canvasEl.getContext('2d')
+    this.cx = canvasEl.getContext("2d")
 
     // Image
-    var imageObj = new Image();
-    imageObj.src = 'https://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+    var imageObj = new Image()
+    imageObj.src =
+      "https://www.html5canvastutorials.com/demos/assets/darth-vader.jpg"
 
     imageObj.onload = function() {
-      canvasEl.width = imageObj.width;
-      canvasEl.height = imageObj.height;
+      canvasEl.width = imageObj.width
+      canvasEl.height = imageObj.height
       // this.cx.drawImage(imageObj, 0, 0);
       this.cx = this.disableSmoothRendering(this.cx)
       this.pixelateImage(imageObj, 0.09)
-    }.bind(this);
+    }.bind(this)
 
     // Test
 
@@ -45,14 +51,14 @@ export class CanvasPixelateComponent implements OnInit {
   }
 
   pixelateImage(image, amount) {
-    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
     // const amount = 0.2
-    var w = canvasEl.width * (amount <= 0 ? 0.01 : amount);
-    var h = canvasEl.height * (amount <= 0 ? 0.01 : amount);
-    
+    var w = canvasEl.width * (amount <= 0 ? 0.01 : amount)
+    var h = canvasEl.height * (amount <= 0 ? 0.01 : amount)
+
     // render smaller image
-    this.cx.drawImage(image, 0, 0, w, h);
+    this.cx.drawImage(image, 0, 0, w, h)
     // stretch the smaller image
-    this.cx.drawImage(canvasEl, 0, 0, w, h, 0, 0, image.width, image.height);
+    this.cx.drawImage(canvasEl, 0, 0, w, h, 0, 0, image.width, image.height)
   }
 }

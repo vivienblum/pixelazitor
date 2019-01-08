@@ -1,3 +1,4 @@
-<input type="file" (change)="onImageSelected($event)" accept="image/png, image/jpeg">
-<img id="toto" *ngIf="imageSrc" [src]="imageSrc">
-<canvas id="myCanvas" width="200" height="100"></canvas>
+<form [formGroup]="amountForm">
+  <input type="number" formControlName="amount" value="{{amount}}" (change)="onUpdate($event)">
+</form>
+<p>Amount {{amount}}</p>
