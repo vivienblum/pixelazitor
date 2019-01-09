@@ -1,17 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/purple-green.css";
 
 // html {
 //   height: 100%;
 // }
 //
-// $main-background: #fdd835;
-// $main-background: #fdd835;
+$main-color: #fdd835;
+$light-background: #fdd835;
+$dark-background: #fdd835;
 
 body {
-  background-color: lightgreen;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: space-between;
+  background-color: #424242;
+  color: white;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }

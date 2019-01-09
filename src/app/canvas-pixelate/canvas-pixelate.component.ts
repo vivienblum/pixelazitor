@@ -18,6 +18,8 @@ export class CanvasPixelateComponent implements OnInit {
   @ViewChild("canvas") public canvas: ElementRef
   private _amount: number
   private _image: HTMLImageElement
+  static WIDTH = 400
+  static HEIGHT = 400
   // @Input() amount: number
   @Input()
   set amount(amount: number) {
@@ -41,9 +43,22 @@ export class CanvasPixelateComponent implements OnInit {
 
     if (this._image) {
       this._image.onload = function() {
-        canvasEl.width = this._image.width
-        canvasEl.height = this._image.height
-        this.cx.drawImage(this._image, 0, 0)
+        const agrandissement = this.getAgrandissement(this._image)
+        canvasEl.width =
+          this._image.width < CanvasPixelateComponent.WIDTH
+            ? this._image.width
+            : CanvasPixelateComponent.WIDTH
+        canvasEl.height =
+          this._image.height < CanvasPixelateComponent.HEIGHT
+            ? this._image.height
+            : CanvasPixelateComponent.HEIGHT
+        this.cx.drawImage(
+          this._image,
+          0,
+          0,
+          this._image.width * agrandissement,
+          this._image.height * agrandissement
+        )
       }.bind(this)
     }
   }
@@ -68,6 +83,7 @@ export class CanvasPixelateComponent implements OnInit {
 
   pixelateImage(image, amount) {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
+    const agrandissement = this.getAgrandissement(image)
 
     this.cx = this.disableSmoothRendering(this.cx)
     // const amount = 0.2
@@ -77,7 +93,36 @@ export class CanvasPixelateComponent implements OnInit {
     // render smaller image
     this.cx.drawImage(image, 0, 0, w, h)
     // stretch the smaller image
-    this.cx.drawImage(canvasEl, 0, 0, w, h, 0, 0, image.width, image.height)
+    this.cx.drawImage(
+      canvasEl,
+      0,
+      0,
+      w,
+      h,
+      0,
+      0,
+      image.width * agrandissement,
+      image.height * agrandissement
+    )
+  }
+
+  getAgrandissement(image: HTMLImageElement): number {
+    if (
+      image.width <= CanvasPixelateComponent.WIDTH &&
+      image.height <= CanvasPixelateComponent.HEIGHT
+    ) {
+      return 1
+    } else if (image.height <= CanvasPixelateComponent.HEIGHT) {
+      return CanvasPixelateComponent.WIDTH / image.width
+    } else if (image.width <= CanvasPixelateComponent.WIDTH) {
+      return CanvasPixelateComponent.HEIGHT / image.height
+    } else {
+      if (image.width > image.height) {
+        return CanvasPixelateComponent.WIDTH / image.width
+      } else {
+        return CanvasPixelateComponent.HEIGHT / image.height
+      }
+    }
   }
 
   get amount(): number {

@@ -34,7 +34,5 @@ export class StepperComponent implements OnInit {
       default:
         break
     }
-    console.log("1:", this.nextButton1)
-    console.log("2:", this.nextButton2)
   }
 }
