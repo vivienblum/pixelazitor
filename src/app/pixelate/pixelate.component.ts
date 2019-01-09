@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core"
+import { Component, OnInit, Output, EventEmitter } from "@angular/core"
 import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { MatSliderModule } from "@angular/material/slider"
 import { Input, ElementRef, AfterViewInit, ViewChild } from "@angular/core"
@@ -12,7 +12,15 @@ import { switchMap, takeUntil, pairwise } from "rxjs/operators"
 })
 export class PixelateComponent implements OnInit {
   amountForm: FormGroup
-  amount: number = 1
+  amount: number
+  private _image: HTMLImageElement = null
+
+  @Output() next: EventEmitter<HTMLImageElement> = new EventEmitter()
+
+  @Input()
+  set image(image: HTMLImageElement) {
+    this._image = image
+  }
 
   constructor(private fb: FormBuilder) {
     this.amountForm = this.fb.group({
@@ -24,7 +32,20 @@ export class PixelateComponent implements OnInit {
 
   ngAfterViewInit() {}
 
+  get image() {
+    return this._image
+  }
+
   onUpdate() {
     this.amount = this.amountForm.value.amount
+    // TODO send image with this.next.emit(this._image)
+  }
+
+  onImageChange(image) {
+    this.next.emit(image)
+  }
+
+  hasImage(): boolean {
+    return this._image !== null
   }
 }

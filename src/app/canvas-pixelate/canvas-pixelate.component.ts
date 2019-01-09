@@ -4,7 +4,9 @@ import {
   ElementRef,
   ViewChild,
   AfterViewInit,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from "@angular/core"
 
 @Component({
@@ -23,30 +25,38 @@ export class CanvasPixelateComponent implements OnInit {
       this._amount = amount
       if (this.cx) {
         this.pixelateImage(this._image, this._amount)
+        const imagePixelate = this.canvas.nativeElement.toDataURL("image/png")
+        this.handleImageChange.emit(imagePixelate)
       }
     }
   }
+
+  @Input()
+  set image(image: HTMLImageElement) {
+    this._image = image
+
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
+
+    this.cx = canvasEl.getContext("2d")
+
+    if (this._image) {
+      this._image.onload = function() {
+        canvasEl.width = this._image.width
+        canvasEl.height = this._image.height
+        this.cx.drawImage(this._image, 0, 0)
+      }.bind(this)
+    }
+  }
+
+  @Output()
+  handleImageChange: EventEmitter<HTMLImageElement> = new EventEmitter()
 
   private cx: CanvasRenderingContext2D
   constructor() {}
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
-    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
-    // image
-    this._image = new Image()
-    this._image.src =
-      "https://www.html5canvastutorials.com/demos/assets/darth-vader.jpg"
-    // canvas
-    this.cx = canvasEl.getContext("2d")
-
-    this._image.onload = function() {
-      canvasEl.width = this._image.width
-      canvasEl.height = this._image.height
-      this.cx.drawImage(this._image, 0, 0)
-    }.bind(this)
-  }
+  ngAfterViewInit() {}
 
   disableSmoothRendering(cx) {
     cx.webkitImageSmoothingEnabled = false

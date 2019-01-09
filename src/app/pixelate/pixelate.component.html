@@ -1,4 +1,12 @@
-<form [formGroup]="amountForm">
-  <input type="number" min="0" max="0.1" step="0.01" formControlName="amount" [value]="amount" (change)="onUpdate()">
-</form>
-<app-canvas-pixelate [amount]="amount"></app-canvas-pixelate>
+<div *ngIf="hasImage()">
+  <form [formGroup]="amountForm">
+    <mat-slider min="0" max="0.1" step="0.01" formControlName="amount" (change)="onUpdate()"></mat-slider>
+  </form>
+
+  <app-canvas-pixelate [image]="image" [amount]="amount" (handleImageChange)="onImageChange($event)"></app-canvas-pixelate>
+</div>
+
+<div *ngIf="!hasImage()">
+  <h2>No image ...</h2>
+  <p>Go to Upload and choose your picture!
+</div>
