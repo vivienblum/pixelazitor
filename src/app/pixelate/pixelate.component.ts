@@ -24,7 +24,7 @@ export class PixelateComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.amountForm = this.fb.group({
-      amount: 0.1
+      amount: -0.2
     })
   }
 
@@ -37,7 +37,7 @@ export class PixelateComponent implements OnInit {
   }
 
   onUpdate() {
-    this.amount = this.amountForm.value.amount
+    this.amount = -this.amountForm.value.amount
     // TODO send image with this.next.emit(this._image)
   }
 
