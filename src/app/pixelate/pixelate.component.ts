@@ -24,7 +24,7 @@ export class PixelateComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.amountForm = this.fb.group({
-      amount: ["", Validators.required]
+      amount: 0.1
     })
   }
 
