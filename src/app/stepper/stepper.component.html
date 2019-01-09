@@ -1,12 +1,12 @@
 <mat-horizontal-stepper linear="1" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+  <mat-step>
     <ng-template matStepLabel>Upload</ng-template>
     <app-upload (next)="next($event, 1)"></app-upload>
     <div>
       <button mat-button matStepperNext [disabled]="!nextButton1">Next</button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
+  <mat-step>
     <ng-template matStepLabel>Pixelate</ng-template>
     <app-pixelate (next)="next($event, 2)" [image]="imageToPixelate"></app-pixelate>
     <div>
