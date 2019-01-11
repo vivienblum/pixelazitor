@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router"
 import { ServiceWorkerModule } from "@angular/service-worker"
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"
+import { HttpClientModule } from "@angular/common/http"
 
 import { MatButtonModule } from "@angular/material/button"
 import { MatSliderModule } from "@angular/material/slider"
@@ -15,8 +16,8 @@ import { UploadComponent } from "./upload/upload.component"
 import { environment } from "../environments/environment"
 import { PixelateComponent } from "./pixelate/pixelate.component"
 import { CanvasPixelateComponent } from "./canvas-pixelate/canvas-pixelate.component"
-import { StepperComponent } from "./stepper/stepper.component";
-import { MatchComponent } from './match/match.component'
+import { StepperComponent } from "./stepper/stepper.component"
+import { MatchComponent } from "./match/match.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     }),
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatSliderModule,
