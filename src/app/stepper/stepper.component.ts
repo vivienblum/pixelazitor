@@ -22,12 +22,11 @@ export class StepperComponent implements OnInit {
       case 1:
         this.nextButton1 = true
         this.imageToPixelate = image
+        this.imagePixelate = image
         break
       case 2:
         this.nextButton2 = true
         this.imagePixelate = image
-        console.log(image.src)
-        // TODO send to server to match
         break
       case 3:
         this.nextButton3 = true

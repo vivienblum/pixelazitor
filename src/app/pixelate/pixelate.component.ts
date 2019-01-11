@@ -42,7 +42,9 @@ export class PixelateComponent implements OnInit {
   }
 
   onImageChange(image) {
-    this.next.emit(image)
+    const imageToSend = new Image()
+    imageToSend.src = image
+    this.next.emit(imageToSend)
   }
 
   hasImage(): boolean {
