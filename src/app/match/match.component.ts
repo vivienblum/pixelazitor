@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core"
 import { MatchService } from "../services/match.service"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
+import { Observable } from "rxjs"
+import { Item } from "../models/item"
 
 @Component({
   selector: "app-match",
@@ -10,6 +12,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 export class MatchComponent implements OnInit {
   private _image: HTMLImageElement = null
   private _loaded: boolean = null
+  private _items: Observable<Item[]>
   file: File = null
 
   @Input()
@@ -40,7 +43,7 @@ export class MatchComponent implements OnInit {
     this._loaded = false
     this.matchService.add(fd).subscribe(res => {
       this._loaded = true
-      console.log(res)
+      this._items = res.items
     })
   }
 
@@ -57,5 +60,9 @@ export class MatchComponent implements OnInit {
 
   get loaded(): boolean {
     return this._loaded
+  }
+
+  get items(): Observable<Item[]> {
+    return this._items
   }
 }

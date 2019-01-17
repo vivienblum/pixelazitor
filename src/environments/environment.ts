@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://match-images.herokuapp.com/api/"
+  baseUrl: "https://match-images.herokuapp.com"
 }
 
 /*

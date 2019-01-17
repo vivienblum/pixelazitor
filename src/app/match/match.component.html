@@ -1,3 +1,5 @@
 <button *ngIf="loaded === null" type="button" (click)="onUpload()">Match</button>
 <img *ngIf="image && loaded === null" [src]="image.src">
 <mat-spinner *ngIf="loaded === false"></mat-spinner>
+
+<app-items *ngIf="loaded" [items]="items"></app-items>

@@ -12,6 +12,6 @@ export class MatchService {
   constructor(private http: HttpClient) {}
 
   public add(fd: FormData) {
-    return this.http.post<any>(`${this.baseUrl}matches/`, fd)
+    return this.http.post<any>(`${this.baseUrl}/api/matches/`, fd)
   }
 }
