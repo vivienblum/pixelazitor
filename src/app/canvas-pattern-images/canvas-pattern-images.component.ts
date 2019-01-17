@@ -10,17 +10,41 @@ import { environment } from "../../environments/environment"
 })
 export class CanvasPatternImagesComponent implements OnInit {
   private _items: Observable<Item[]>
+  private _itemsIndexed: Observable<Item[]>
   private _pattern: number[][]
+  private _patternImages: string[][]
   baseUrl = environment.baseUrl
 
   @Input()
   set items(items: Observable<Item[]>) {
-    this._items = items
+    if (items != this._items) {
+      this._items = items
+      let itemsIndexed: number[] = new Array(this._items.length)
+      this._items.forEach(item => {
+        itemsIndexed[item.id] = item
+      })
+      this._itemsIndexed = itemsIndexed
+    }
   }
 
   @Input()
   set pattern(pattern: number[][]) {
-    this._pattern = pattern
+    if (pattern != this._pattern) {
+      this._pattern = pattern
+
+      let patternImages: string[][] = new Array(this._pattern.length)
+      this._pattern.forEach((row, y) => {
+        patternImages[y] = new Array(row.length)
+        row.forEach((el, x) => {
+          // this._items.filter(item => {
+          //   return (item.id = el)
+          // })
+
+          patternImages[y][x] = el >= 0 ? this._itemsIndexed[el] : null
+        })
+      })
+      this._patternImages = patternImages
+    }
   }
 
   constructor() {}
@@ -36,23 +60,6 @@ export class CanvasPatternImagesComponent implements OnInit {
   }
 
   get patternImages(): string[][] {
-    let itemsIndexed: number[] = new Array(this._items.length)
-    this._items.forEach(item => {
-      itemsIndexed[item.id] = item
-    })
-
-    let patternImages: string[][] = new Array(this._pattern.length)
-    this._pattern.forEach((row, y) => {
-      patternImages[y] = new Array(row.length)
-      row.forEach((el, x) => {
-        this._items.filter(item => {
-          return (item.id = el)
-        })
-
-        patternImages[y][x] = el >= 0 ? itemsIndexed[el] : null
-      })
-    })
-    console.table(patternImages)
-    return patternImages
+    return this._patternImages
   }
 }
