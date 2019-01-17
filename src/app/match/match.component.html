@@ -1,6 +1,6 @@
 <img *ngIf="image && loaded === null" [src]="image.src">
 <div *ngIf="loaded === null || loaded === true">
-  <button type="button" (click)="onUpload()">Match</button>
+  <button (click)="onUpload(5)" mat-button>Match with color</button>
 </div>
 <mat-spinner *ngIf="loaded === false"></mat-spinner>
 

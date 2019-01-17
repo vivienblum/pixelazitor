@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core"
 import { MatchService } from "../services/match.service"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
+import { MatButtonModule } from "@angular/material/button"
 import { Observable } from "rxjs"
 import { Item } from "../models/item"
 
@@ -33,12 +34,11 @@ export class MatchComponent implements OnInit {
     return this._image
   }
 
-  onUpload() {
+  onUpload(collection: number) {
     const fd = new FormData()
     const image = this.imageToFile(this._image)
     fd.append("image", image, image.name)
-    // TODO CHANGE collection default 5 to variable
-    fd.append("collection", "5")
+    fd.append("collection", collection.toString())
 
     this._loaded = false
     this.matchService.add(fd).subscribe(res => {
