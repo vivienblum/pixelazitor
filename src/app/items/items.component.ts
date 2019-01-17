@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core"
 import { Item } from "../models/item"
+import { MatListModule } from "@angular/material/list"
 
 const items = <Item[]>[
   {

@@ -9,6 +9,7 @@ import { HttpClientModule } from "@angular/common/http"
 import { MatButtonModule } from "@angular/material/button"
 import { MatSliderModule } from "@angular/material/slider"
 import { MatStepperModule } from "@angular/material/stepper"
+import { MatListModule } from "@angular/material/list"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -17,8 +18,8 @@ import { environment } from "../environments/environment"
 import { PixelateComponent } from "./pixelate/pixelate.component"
 import { CanvasPixelateComponent } from "./canvas-pixelate/canvas-pixelate.component"
 import { StepperComponent } from "./stepper/stepper.component"
-import { MatchComponent } from "./match/match.component";
-import { ItemsComponent } from './items/items.component'
+import { MatchComponent } from "./match/match.component"
+import { ItemsComponent } from "./items/items.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatSliderModule,
-    MatStepperModule
+    MatStepperModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
