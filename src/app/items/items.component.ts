@@ -11,6 +11,15 @@ const items = <Item[]>[
     blue: 79,
     green: 84,
     red: 89
+  },
+  {
+    id: 2,
+    name: "Desperados",
+    image: "https://match-images.herokuapp.com/media/item_image/pink.png",
+    collection: 5,
+    blue: 30,
+    green: 100,
+    red: 200
   }
 ]
 
@@ -23,4 +32,13 @@ export class ItemsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  // get items(): <Item[]> {
+  //   return items
+  // }
+
+  // TODO change any to <Item[]>
+  get items(): any {
+    return items
+  }
 }
