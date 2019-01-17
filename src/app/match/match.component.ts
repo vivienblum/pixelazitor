@@ -29,13 +29,15 @@ export class MatchComponent implements OnInit {
   }
 
   onUpload() {
-    // console.log(this.imageToFile(this._image))
+    const fd = new FormData()
+    const image = this.imageToFile(this._image)
+    fd.append("image", image, image.name)
+    // TODO CHANGE collection default 5 to variable
+    fd.append("collection", "5")
 
-    this.matchService
-      .add({ image: this.imageToFile(this._image), collection: 5 })
-      .subscribe(res => {
-        console.log(res)
-      })
+    this.matchService.add(fd).subscribe(res => {
+      console.log(res)
+    })
 
     // const fd = new FormData()
     // fd.append("image", this.file, this.file.name)
