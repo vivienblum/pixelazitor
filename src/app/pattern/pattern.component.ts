@@ -31,6 +31,6 @@ export class PatternComponent implements OnInit {
   }
 
   get pattern(): number[][] {
-    return this.pattern
+    return this._pattern
   }
 }
