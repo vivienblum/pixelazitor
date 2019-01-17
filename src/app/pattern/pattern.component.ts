@@ -19,7 +19,6 @@ export class PatternComponent implements OnInit {
   @Input()
   set pattern(pattern: number[][]) {
     this._pattern = pattern
-    console.table(this._pattern)
   }
 
   constructor() {}

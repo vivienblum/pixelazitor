@@ -19,6 +19,7 @@ export class CanvasPatternImagesComponent implements OnInit {
   @Input()
   set pattern(pattern: number[][]) {
     this._pattern = pattern
+    console.table(this._pattern)
   }
 
   constructor() {}
@@ -30,6 +31,6 @@ export class CanvasPatternImagesComponent implements OnInit {
   }
 
   get pattern(): number[][] {
-    return this.pattern
+    return this._pattern
   }
 }
