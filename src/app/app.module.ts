@@ -10,6 +10,7 @@ import { MatButtonModule } from "@angular/material/button"
 import { MatSliderModule } from "@angular/material/slider"
 import { MatStepperModule } from "@angular/material/stepper"
 import { MatListModule } from "@angular/material/list"
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatSliderModule,
     MatStepperModule,
+    MatProgressSpinnerModule,
     MatListModule
   ],
   providers: [],

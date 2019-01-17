@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core"
 import { MatchService } from "../services/match.service"
-import { HttpEventType } from "@angular/common/http"
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 
 @Component({
   selector: "app-match",
