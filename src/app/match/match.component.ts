@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core"
 import { MatchService } from "../services/match.service"
+import { HttpEventType } from "@angular/common/http"
 
 @Component({
   selector: "app-match",
@@ -8,6 +9,7 @@ import { MatchService } from "../services/match.service"
 })
 export class MatchComponent implements OnInit {
   private _image: HTMLImageElement = null
+  private _loaded: boolean = null
   file: File = null
 
   @Input()
@@ -35,7 +37,9 @@ export class MatchComponent implements OnInit {
     // TODO CHANGE collection default 5 to variable
     fd.append("collection", "5")
 
+    this._loaded = false
     this.matchService.add(fd).subscribe(res => {
+      this._loaded = true
       console.log(res)
     })
 
@@ -60,5 +64,9 @@ export class MatchComponent implements OnInit {
     }
     var blob = new Blob([new Uint8Array(array)], { type: "image/png" })
     return new File([blob], "dot.png", blob)
+  }
+
+  get loaded(): boolean {
+    return this._loaded
   }
 }
