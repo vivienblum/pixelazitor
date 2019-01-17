@@ -1,9 +1,12 @@
 import { Component, OnInit } from "@angular/core"
+import { Item } from "../models/item"
 
-const items = [
+const items = <Item[]>[
   {
     id: 1,
     name: "Leffe",
+    image:
+      "https://match-images.herokuapp.com/media/item_image/grey_XzGE43q.png",
     collection: 5,
     blue: 79,
     green: 84,
