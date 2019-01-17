@@ -1,3 +1,9 @@
-<p>
-  canvas-pattern-images works!
-</p>
+<table>
+  <tbody>
+    <tr *ngFor="let row of patternImages">
+      <td *ngFor="let el of row">
+        <img *ngIf="el" [src]="baseUrl + el.image" [alt]="el.name" class="image-table">
+      </td>
+    </tr>
+  </tbody>
+</table>
