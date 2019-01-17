@@ -20,7 +20,8 @@ import { PixelateComponent } from "./pixelate/pixelate.component"
 import { CanvasPixelateComponent } from "./canvas-pixelate/canvas-pixelate.component"
 import { StepperComponent } from "./stepper/stepper.component"
 import { MatchComponent } from "./match/match.component"
-import { ItemsComponent } from "./items/items.component"
+import { ItemsComponent } from "./items/items.component";
+import { PatternComponent } from './pattern/pattern.component'
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     CanvasPixelateComponent,
     StepperComponent,
     MatchComponent,
-    ItemsComponent
+    ItemsComponent,
+    PatternComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
