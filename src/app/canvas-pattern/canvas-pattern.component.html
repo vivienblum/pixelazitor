@@ -1,5 +1,9 @@
 <table>
-  <tr *ngFor="let row of pattern">
-    <td>{{row}}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let row of pattern">
+      <td *ngFor="let el of row">
+        {{el}}
+      </td>
+    </tr>
+  </tbody>
 </table>
