@@ -9,17 +9,17 @@ import { environment } from "../../environments/environment"
   styleUrls: ["./canvas-pattern-images.component.scss"]
 })
 export class CanvasPatternImagesComponent implements OnInit {
-  private _items: Observable<Item[]>
-  private _itemsIndexed: Observable<Item[]>
+  private _items: Item[]
+  private _itemsIndexed: Item[]
   private _pattern: number[][]
-  private _patternImages: string[][]
+  private _patternImages: Item[][]
   baseUrl = environment.baseUrl
 
   @Input()
-  set items(items: Observable<Item[]>) {
-    if (items != this._items) {
+  set items(items: Item[]) {
+    if (items && items != this._items) {
       this._items = items
-      let itemsIndexed: number[] = new Array(this._items.length)
+      let itemsIndexed: Item[] = new Array(this._items.length)
       this._items.forEach(item => {
         itemsIndexed[item.id] = item
       })
@@ -32,7 +32,7 @@ export class CanvasPatternImagesComponent implements OnInit {
     if (pattern != this._pattern) {
       this._pattern = pattern
 
-      let patternImages: string[][] = new Array(this._pattern.length)
+      let patternImages: Item[][] = new Array(this._pattern.length)
       this._pattern.forEach((row, y) => {
         patternImages[y] = new Array(row.length)
         row.forEach((el, x) => {
@@ -47,7 +47,7 @@ export class CanvasPatternImagesComponent implements OnInit {
 
   ngOnInit() {}
 
-  get items(): Observable<Item[]> {
+  get items(): Item[] {
     return this._items
   }
 
@@ -55,7 +55,7 @@ export class CanvasPatternImagesComponent implements OnInit {
     return this._pattern
   }
 
-  get patternImages(): string[][] {
+  get patternImages(): Item[][] {
     return this._patternImages
   }
 }
