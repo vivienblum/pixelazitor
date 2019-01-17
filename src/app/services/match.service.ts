@@ -10,6 +10,6 @@ export class MatchService {
 
   public add(match: any): Observable<any> {
     const url = "https://match-images.herokuapp.com/api/"
-    return this.http.post<any>(`${url}match/`, match)
+    return this.http.post<any>(`${url}matches/`, match)
   }
 }

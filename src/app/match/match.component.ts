@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core"
-import { HttpClient } from "@angular/common/http"
+import { MatchService } from "../services/match.service"
 
 @Component({
   selector: "app-match",
@@ -18,7 +18,7 @@ export class MatchComponent implements OnInit {
     }
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private matchService: MatchService) {}
 
   ngOnInit() {}
 
@@ -31,16 +31,22 @@ export class MatchComponent implements OnInit {
   onUpload() {
     console.log(this.imageToFile(this._image))
 
-    const fd = new FormData()
-    fd.append("image", this.file, this.file.name)
-    this.http
-      .post(
-        "http://us-central-fb-cloud-functions-demo.cloudfunctions.net/uploadFile",
-        fd
-      )
+    this.matchService
+      .add({ image: this._image, collection: 5 })
       .subscribe(res => {
         console.log(res)
       })
+
+    // const fd = new FormData()
+    // fd.append("image", this.file, this.file.name)
+    // this.http
+    //   .post(
+    //     "http://us-central-fb-cloud-functions-demo.cloudfunctions.net/uploadFile",
+    //     fd
+    //   )
+    //   .subscribe(res => {
+    //     console.log(res)
+    //   })
   }
 
   // TODO create service
