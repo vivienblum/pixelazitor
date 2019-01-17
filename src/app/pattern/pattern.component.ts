@@ -9,10 +9,17 @@ import { Item } from "../models/item"
 })
 export class PatternComponent implements OnInit {
   private _items: Observable<Item[]>
+  private _pattern: any
 
   @Input()
   set items(items: Observable<Item[]>) {
     this._items = items
+  }
+
+  @Input()
+  set pattern(pattern: any) {
+    this._pattern = pattern
+    console.table(this._pattern)
   }
 
   constructor() {}
@@ -21,5 +28,9 @@ export class PatternComponent implements OnInit {
 
   get items(): Observable<Item[]> {
     return this._items
+  }
+
+  get pattern(): any {
+    return this.pattern
   }
 }

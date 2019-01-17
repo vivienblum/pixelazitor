@@ -4,6 +4,6 @@
 </div>
 <mat-spinner *ngIf="loaded === false"></mat-spinner>
 
-<app-pattern *ngIf="loaded" [items]="items" ></app-pattern>
+<app-pattern *ngIf="loaded" [items]="items" [pattern]="pattern"></app-pattern>
 
 <app-items *ngIf="loaded" [items]="items"></app-items>

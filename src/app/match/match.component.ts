@@ -14,6 +14,7 @@ export class MatchComponent implements OnInit {
   private _image: HTMLImageElement = null
   private _loaded: boolean = null
   private _items: Observable<Item[]>
+  private _pattern: any
   file: File = null
 
   @Input()
@@ -44,6 +45,7 @@ export class MatchComponent implements OnInit {
     this.matchService.add(fd).subscribe(res => {
       this._loaded = true
       this._items = res.items
+      this._pattern = res.pattern
     })
   }
 
@@ -64,5 +66,9 @@ export class MatchComponent implements OnInit {
 
   get items(): Observable<Item[]> {
     return this._items
+  }
+
+  get pattern(): any {
+    return this._pattern
   }
 }
