@@ -9,7 +9,7 @@ import { Item } from "../models/item"
 })
 export class PatternComponent implements OnInit {
   private _items: Observable<Item[]>
-  private _pattern: any
+  private _pattern: number[][]
 
   @Input()
   set items(items: Observable<Item[]>) {
@@ -17,7 +17,7 @@ export class PatternComponent implements OnInit {
   }
 
   @Input()
-  set pattern(pattern: any) {
+  set pattern(pattern: number[][]) {
     this._pattern = pattern
     console.table(this._pattern)
   }
@@ -30,7 +30,7 @@ export class PatternComponent implements OnInit {
     return this._items
   }
 
-  get pattern(): any {
+  get pattern(): number[][] {
     return this.pattern
   }
 }

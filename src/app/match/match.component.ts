@@ -14,7 +14,7 @@ export class MatchComponent implements OnInit {
   private _image: HTMLImageElement = null
   private _loaded: boolean = null
   private _items: Observable<Item[]>
-  private _pattern: any
+  private _pattern: number[][]
   file: File = null
 
   @Input()
@@ -68,7 +68,7 @@ export class MatchComponent implements OnInit {
     return this._items
   }
 
-  get pattern(): any {
+  get pattern(): number[][] {
     return this._pattern
   }
 }
