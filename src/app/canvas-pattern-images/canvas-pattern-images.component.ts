@@ -36,10 +36,6 @@ export class CanvasPatternImagesComponent implements OnInit {
       this._pattern.forEach((row, y) => {
         patternImages[y] = new Array(row.length)
         row.forEach((el, x) => {
-          // this._items.filter(item => {
-          //   return (item.id = el)
-          // })
-
           patternImages[y][x] = el >= 0 ? this._itemsIndexed[el] : null
         })
       })
