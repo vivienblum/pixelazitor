@@ -2,7 +2,8 @@
   <tbody>
     <tr *ngFor="let row of pattern">
       <td *ngFor="let el of row">
-        {{el}}
+        <span *ngIf="el >= 0">{{el}}</span>
+        <span *ngIf="el < 0">?</span>
       </td>
     </tr>
   </tbody>

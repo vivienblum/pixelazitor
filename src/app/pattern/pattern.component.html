@@ -1,5 +1,6 @@
-<p>
-  pattern works!
-</p>
-<app-canvas-pattern-images [items]="items" [pattern]="pattern"></app-canvas-pattern-images>
-<app-canvas-pattern [pattern]="pattern"></app-canvas-pattern>
+<mat-button-toggle-group name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup" value="images">
+  <mat-button-toggle value="images">Images</mat-button-toggle>
+  <mat-button-toggle value="pattern">Pattern</mat-button-toggle>
+</mat-button-toggle-group>
+<app-canvas-pattern-images *ngIf="group.value === 'images'" [items]="items" [pattern]="pattern"></app-canvas-pattern-images>
+<app-canvas-pattern *ngIf="group.value === 'pattern'" [pattern]="pattern"></app-canvas-pattern>

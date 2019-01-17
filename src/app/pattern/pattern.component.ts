@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core"
 import { Observable } from "rxjs"
+import { MatButtonToggleModule } from "@angular/material/button-toggle"
 import { Item } from "../models/item"
 
 @Component({
