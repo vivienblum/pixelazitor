@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
-};
+  production: true,
+  baseUrl: "https://match-images.herokuapp.com"
+}
