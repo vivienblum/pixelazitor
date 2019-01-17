@@ -29,10 +29,10 @@ export class MatchComponent implements OnInit {
   }
 
   onUpload() {
-    console.log(this.imageToFile(this._image))
+    // console.log(this.imageToFile(this._image))
 
     this.matchService
-      .add({ image: this._image, collection: 5 })
+      .add({ image: this.imageToFile(this._image), collection: 5 })
       .subscribe(res => {
         console.log(res)
       })
