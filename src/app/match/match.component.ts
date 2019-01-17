@@ -42,17 +42,6 @@ export class MatchComponent implements OnInit {
       this._loaded = true
       console.log(res)
     })
-
-    // const fd = new FormData()
-    // fd.append("image", this.file, this.file.name)
-    // this.http
-    //   .post(
-    //     "http://us-central-fb-cloud-functions-demo.cloudfunctions.net/uploadFile",
-    //     fd
-    //   )
-    //   .subscribe(res => {
-    //     console.log(res)
-    //   })
   }
 
   // TODO create service
