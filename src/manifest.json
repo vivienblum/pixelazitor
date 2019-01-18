@@ -1,8 +1,8 @@
 {
   "name": "pixelizator",
   "short_name": "pixelizator",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#6200EE",
+  "background_color": "#546E7A",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
