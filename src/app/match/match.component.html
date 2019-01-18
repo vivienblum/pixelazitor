@@ -1,6 +1,9 @@
 <img *ngIf="image && loaded === null" [src]="image.src">
 <div *ngIf="loaded === null || loaded === true">
-  <button (click)="onUpload(5)" mat-button>Match with color</button>
+  <button (click)="onUpload(5)" mat-raised-button color="primary">Match with color</button>
+  <button (click)="onUpload(2)" mat-raised-button color="primary" disabled>Match with Café caps</button>
+  <button (click)="onUpload(1)" mat-raised-button color="primary" disabled>Match with beer caps</button>
+  <button (click)="onUpload(3)" mat-raised-button color="primary" disabled>Match with Lego</button>
 </div>
 <mat-spinner *ngIf="loaded === false"></mat-spinner>
 
