@@ -2,6 +2,7 @@ import { Component, OnInit, Input, AfterViewInit } from "@angular/core"
 import { MatchService } from "../services/match.service"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatButtonModule } from "@angular/material/button"
+import { MatIconModule } from "@angular/material/icon"
 import { Observable } from "rxjs"
 import { Item } from "../models/item"
 
