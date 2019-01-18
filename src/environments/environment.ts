@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://match-images.herokuapp.com"
+  baseUrl: "https://match-images.herokuapp.com",
+  // baseUrl: "http://localhost:8000",
+  pixelMin: -0.2
 }
 
 /*

@@ -4,6 +4,7 @@ import { MatSliderModule } from "@angular/material/slider"
 import { Input, ElementRef, AfterViewInit, ViewChild } from "@angular/core"
 import { fromEvent } from "rxjs"
 import { switchMap, takeUntil, pairwise } from "rxjs/operators"
+import { environment } from "../../environments/environment"
 
 @Component({
   selector: "app-pixelate",
@@ -13,6 +14,7 @@ import { switchMap, takeUntil, pairwise } from "rxjs/operators"
 export class PixelateComponent implements OnInit {
   amountForm: FormGroup
   amount: number
+  pixelMin: number = environment.pixelMin
   private _image: HTMLImageElement = null
 
   @Output() next: EventEmitter<HTMLImageElement> = new EventEmitter()

@@ -46,7 +46,7 @@ export class MatchComponent implements OnInit {
     const image = this.imageToFile(this._image)
     fd.append("image", image, image.name)
     fd.append("collection", collection.toString())
-    fd.append("delta", "255")
+    fd.append("delta", "100")
 
     this._loaded = false
     this.matchService.add(fd).subscribe(
