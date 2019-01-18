@@ -5,6 +5,7 @@
   <button (click)="onUpload(1)" mat-raised-button color="warn" disabled><mat-icon>weekend</mat-icon> Match with beer caps</button>
   <button (click)="onUpload(3)" mat-raised-button color="warn" disabled><mat-icon>business</mat-icon> Match with Lego</button>
 </div>
+
 <mat-spinner *ngIf="loaded === false"></mat-spinner>
 
 <app-pattern *ngIf="loaded" [items]="items" [pattern]="pattern"></app-pattern>

@@ -4,6 +4,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
 import { Observable } from "rxjs"
+import { MatSnackBarModule } from "@angular/material/snack-bar"
+import { MatSnackBar } from "@angular/material"
 import { Item } from "../models/item"
 
 @Component({
@@ -26,7 +28,10 @@ export class MatchComponent implements OnInit {
     }
   }
 
-  constructor(private matchService: MatchService) {}
+  constructor(
+    private matchService: MatchService,
+    public snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {}
 
@@ -44,10 +49,22 @@ export class MatchComponent implements OnInit {
     fd.append("delta", "255")
 
     this._loaded = false
-    this.matchService.add(fd).subscribe(res => {
-      this._loaded = true
-      this._items = res.items
-      this._pattern = res.pattern
+    this.matchService.add(fd).subscribe(
+      data => {
+        this._loaded = true
+        this._items = data.items
+        this._pattern = data.pattern
+      },
+      error => {
+        this._loaded = null
+        this.openSnackBar("Image is too big, try to pixelate it more!", null)
+      }
+    )
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 4000
     })
   }
 
@@ -59,7 +76,7 @@ export class MatchComponent implements OnInit {
       array.push(blobBin.charCodeAt(i))
     }
     var blob = new Blob([new Uint8Array(array)], { type: "image/png" })
-    return new File([blob], "dot.png", blob)
+    return new File([blob], "tmp.png", blob)
   }
 
   get loaded(): boolean {

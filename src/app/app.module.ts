@@ -13,6 +13,7 @@ import { MatListModule } from "@angular/material/list"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatButtonToggleModule } from "@angular/material/button-toggle"
 import { MatIconModule } from "@angular/material/icon"
+import { MatSnackBarModule } from "@angular/material/snack-bar"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
     MatProgressSpinnerModule,
     MatButtonToggleModule,
     MatIconModule,
+    MatSnackBarModule,
     MatListModule
   ],
   providers: [],
