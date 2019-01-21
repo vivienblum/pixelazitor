@@ -15,4 +15,22 @@ export class CollectionService {
   public getCollections(): Observable<Collection[]> {
     return this.http.get<Collection[]>(`${this.baseUrl}/api/collections/`)
   }
+
+  public delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/api/collections/${id}/`)
+  }
+
+  public update(collection: Collection): Observable<any> {
+    return this.http.put<Collection>(
+      `${this.baseUrl}/api/collections/${collection.id}/`,
+      collection
+    )
+  }
+
+  public add(collection: any): Observable<Collection> {
+    return this.http.post<Collection>(
+      `${this.baseUrl}/api/collections/`,
+      collection
+    )
+  }
 }
