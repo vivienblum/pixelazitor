@@ -27,11 +27,12 @@ import { ItemsComponent } from "./items/items.component"
 import { PatternComponent } from "./pattern/pattern.component"
 import { CanvasPatternComponent } from "./canvas-pattern/canvas-pattern.component"
 import { CanvasPatternImagesComponent } from "./canvas-pattern-images/canvas-pattern-images.component"
+import { AdminComponent } from "./admin/admin.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "upload", component: StepperComponent },
-  { path: "pixelate", component: PixelateComponent }
+  { path: "admin", component: AdminComponent }
 ]
 
 @NgModule({
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     ItemsComponent,
     PatternComponent,
     CanvasPatternComponent,
-    CanvasPatternImagesComponent
+    CanvasPatternImagesComponent,
+    AdminComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
