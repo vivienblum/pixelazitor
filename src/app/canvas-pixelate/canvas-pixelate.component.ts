@@ -44,14 +44,28 @@ export class CanvasPixelateComponent implements OnInit {
     if (this._image) {
       this._image.onload = function() {
         const agrandissement = this.getAgrandissement(this._image)
-        canvasEl.width =
-          this._image.width < CanvasPixelateComponent.WIDTH
-            ? this._image.width
-            : CanvasPixelateComponent.WIDTH
-        canvasEl.height =
-          this._image.height < CanvasPixelateComponent.HEIGHT
-            ? this._image.height
-            : CanvasPixelateComponent.HEIGHT
+        if (
+          this._image.width <= CanvasPixelateComponent.WIDTH &&
+          this._image.height <= CanvasPixelateComponent.HEIGHT
+        ) {
+          canvasEl.width = this._image.width
+          canvasEl.height = this._image.height
+        } else if (this._image.height <= CanvasPixelateComponent.HEIGHT) {
+          canvasEl.width = CanvasPixelateComponent.WIDTH
+          canvasEl.height = this._image.height
+        } else if (this._image.width <= CanvasPixelateComponent.WIDTH) {
+          canvasEl.width = this._image.width
+          canvasEl.height = CanvasPixelateComponent.HEIGHT
+        } else {
+          if (this._image.width > this._image.height) {
+            canvasEl.width = CanvasPixelateComponent.WIDTH
+            canvasEl.height = this._image.height * agrandissement
+          } else {
+            canvasEl.width = this._image.width * agrandissement
+            canvasEl.height = CanvasPixelateComponent.HEIGHT
+          }
+        }
+
         this.cx.drawImage(
           this._image,
           0,
