@@ -1,4 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core"
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  ViewChild,
+  AfterViewInit
+} from "@angular/core"
 import { Observable } from "rxjs"
 
 @Component({
@@ -7,6 +14,7 @@ import { Observable } from "rxjs"
   styleUrls: ["./canvas-pattern.component.scss"]
 })
 export class CanvasPatternComponent implements OnInit {
+  @ViewChild("canvas") public canvas: ElementRef
   private _pattern: number[][]
 
   @Input()
@@ -17,6 +25,14 @@ export class CanvasPatternComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  ngAfterViewInit() {
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
+    //
+    this.cx = canvasEl.getContext("2d")
+    //
+    console.log(canvasEl.width, canvasEl.height)
+  }
 
   get pattern(): number[][] {
     return this._pattern
