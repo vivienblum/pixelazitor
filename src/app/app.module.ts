@@ -33,7 +33,8 @@ import { CanvasPatternComponent } from "./canvas-pattern/canvas-pattern.componen
 import { CanvasPatternImagesComponent } from "./canvas-pattern-images/canvas-pattern-images.component"
 import { CollectionsComponent } from "./collections/collections.component"
 import { CollectionCreationComponent } from "./collection-creation/collection-creation.component"
-import { CollectionItemsComponent } from "./collection-items/collection-items.component"
+import { CollectionItemsComponent } from "./collection-items/collection-items.component";
+import { ItemCreationComponent } from './item-creation/item-creation.component'
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     CanvasPatternImagesComponent,
     CollectionsComponent,
     CollectionCreationComponent,
-    CollectionItemsComponent
+    CollectionItemsComponent,
+    ItemCreationComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing: true }),

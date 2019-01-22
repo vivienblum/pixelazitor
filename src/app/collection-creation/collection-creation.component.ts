@@ -29,7 +29,7 @@ export class CollectionCreationComponent implements OnInit {
 
   createCollection() {
     const collection = this.collectionForm.value
-    // collection["id"] = 7
+
     this.handleCreateCollection.emit(collection)
   }
 }

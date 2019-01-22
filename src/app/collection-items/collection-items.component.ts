@@ -11,6 +11,8 @@ import { MatInputModule } from "@angular/material/input"
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
 import { MatListModule } from "@angular/material/list"
+import { environment } from "../../environments/environment"
+import { imageToFile } from "../../shared/utils/image"
 
 @Component({
   selector: "app-collection-items",
@@ -23,6 +25,7 @@ export class CollectionItemsComponent implements OnInit {
   private _loading: boolean = null
   private _edit: boolean = false
   collectionForm: FormGroup
+  baseUrl = environment.baseUrl
 
   constructor(
     private route: ActivatedRoute,
@@ -113,6 +116,28 @@ export class CollectionItemsComponent implements OnInit {
         )
       },
       error => {
+        this._loading = false
+      }
+    )
+  }
+
+  addItem(item: Item) {
+    this._loading = true
+    const id = parseInt(this.route.snapshot.paramMap.get("id"))
+    item.append("collection", id)
+    this.itemService.add(id, item).subscribe(
+      res => {
+        this._items = this.itemService.getItems(id)
+        this._items.subscribe(
+          data => {
+            this._loading = false
+          },
+          error => {
+            this._loading = false
+          }
+        )
+      },
+      err => {
         this._loading = false
       }
     )
