@@ -11,7 +11,6 @@ import { MatInputModule } from "@angular/material/input"
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
 import { MatListModule } from "@angular/material/list"
-import { environment } from "../../environments/environment"
 import { imageToFile } from "../../shared/utils/image"
 
 @Component({
@@ -25,7 +24,6 @@ export class CollectionItemsComponent implements OnInit {
   private _loading: boolean = null
   private _edit: boolean = false
   collectionForm: FormGroup
-  baseUrl = environment.baseUrl
 
   constructor(
     private route: ActivatedRoute,

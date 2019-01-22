@@ -21,7 +21,7 @@
 
   <mat-list role="list">
     <mat-list-item *ngFor="let item of items | async">
-      <img matListAvatar [src]="baseUrl + item.image" [alt]="item.name">
+      <img matListAvatar [src]="item.image" [alt]="item.name">
       <h3 matLine>{{item.id}} - {{item.name}} </h3>
       <p matLine> RGB({{item.red}}, {{item.green}}, {{item.blue}})</p>
     </mat-list-item>
