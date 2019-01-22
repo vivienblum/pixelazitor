@@ -33,4 +33,8 @@ export class CollectionService {
       collection
     )
   }
+
+  public get(id: number): Observable<Collection> {
+    return this.http.get<Collection>(`${this.baseUrl}/api/collections/${id}/`)
+  }
 }

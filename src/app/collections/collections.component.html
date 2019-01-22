@@ -3,7 +3,9 @@
   <mat-spinner *ngIf="loading"></mat-spinner>
   <mat-list role="list">
     <mat-list-item *ngFor="let collection of collections | async">
-      <h3 matLine>{{collection.name}}</h3>
+      <a [routerLink]="['/admin/collections', collection.id]">
+        <h3 matLine class="collection-button">{{collection.name}}</h3>
+      </a>
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>

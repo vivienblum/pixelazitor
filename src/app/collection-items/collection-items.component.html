@@ -1,0 +1,4 @@
+<div class="centered-content">
+  <h2 *ngIf="(collection | async) as collection">{{collection.name}}</h2>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</div>
