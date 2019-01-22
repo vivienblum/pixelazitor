@@ -1,7 +1,10 @@
-<app-collection-creation (handleCreateCollection)="add($event)"></app-collection-creation>
-<mat-spinner *ngIf="loading"></mat-spinner>
-<mat-list role="list">
-  <mat-list-item *ngFor="let collection of collections | async">
-    <h3 matLine> {{collection.id}} - {{collection.name}} </h3>
-  </mat-list-item>
-</mat-list>
+<div class="centered-content">
+  <app-collection-creation (handleCreateCollection)="add($event)"></app-collection-creation>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+  <mat-list role="list">
+    <mat-list-item *ngFor="let collection of collections | async">
+      <h3 matLine>{{collection.name}}</h3>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>

@@ -15,6 +15,9 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle"
 import { MatIconModule } from "@angular/material/icon"
 import { MatSnackBarModule } from "@angular/material/snack-bar"
 import { MatInputModule } from "@angular/material/input"
+import { MatCardModule } from "@angular/material/card"
+import { MatGridListModule } from "@angular/material/grid-list"
+import { MatDividerModule } from "@angular/material/divider"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -28,7 +31,6 @@ import { ItemsComponent } from "./items/items.component"
 import { PatternComponent } from "./pattern/pattern.component"
 import { CanvasPatternComponent } from "./canvas-pattern/canvas-pattern.component"
 import { CanvasPatternImagesComponent } from "./canvas-pattern-images/canvas-pattern-images.component"
-import { AdminComponent } from "./admin/admin.component"
 import { CollectionsComponent } from "./collections/collections.component"
 import { CollectionCreationComponent } from "./collection-creation/collection-creation.component"
 
@@ -51,7 +53,6 @@ const appRoutes: Routes = [
     PatternComponent,
     CanvasPatternComponent,
     CanvasPatternImagesComponent,
-    AdminComponent,
     CollectionsComponent,
     CollectionCreationComponent
   ],
@@ -73,7 +74,10 @@ const appRoutes: Routes = [
     MatIconModule,
     MatSnackBarModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
+    MatGridListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
