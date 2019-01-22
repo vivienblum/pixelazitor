@@ -1,5 +1,19 @@
 <div class="centered-content">
-  <h2 *ngIf="(collection | async) as collection">{{collection.name}}</h2>
-  <button (click)="handleDelete()">Delete</button>
+  <h2 *ngIf="!edit && (collection | async) as collection">{{collection.name}}</h2>
+  <form *ngIf="edit" [formGroup]="collectionForm" (ngSubmit)="editCollection()">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    <button mat-button [disabled]="collectionForm.invalid" type="submit">Edit</button>
+  </form>
+  <div class="button-container">
+    <button mat-icon-button (click)="handleEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="handleDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
   <mat-spinner *ngIf="loading"></mat-spinner>
 </div>
