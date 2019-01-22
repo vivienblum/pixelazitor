@@ -1,4 +1,5 @@
 <div class="centered-content">
   <h2 *ngIf="(collection | async) as collection">{{collection.name}}</h2>
+  <button (click)="handleDelete()">Delete</button>
   <mat-spinner *ngIf="loading"></mat-spinner>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core"
-import { ActivatedRoute } from "@angular/router"
+import { ActivatedRoute, Router } from "@angular/router"
 import { Observable } from "rxjs"
 import { Collection } from "../models/collection"
 import { CollectionService } from "../services/collection.service"
@@ -16,7 +16,8 @@ export class CollectionItemsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private collectionService: CollectionService
+    private collectionService: CollectionService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,5 +40,19 @@ export class CollectionItemsComponent implements OnInit {
 
   get collection(): Observable<Collection> {
     return this._collection
+  }
+
+  handleDelete() {
+    this._loading = true
+    const id = parseInt(this.route.snapshot.paramMap.get("id"))
+    this.collectionService.delete(id).subscribe(
+      res => {
+        this._loading = false
+        this.router.navigate(["admin"])
+      },
+      error => {
+        this._loading = false
+      }
+    )
   }
 }
