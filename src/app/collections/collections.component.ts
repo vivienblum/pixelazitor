@@ -4,8 +4,6 @@ import { CollectionService } from "../services/collection.service"
 import { Observable } from "rxjs"
 import { MatListModule } from "@angular/material/list"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
-import { MatCardModule } from "@angular/material/card"
-import { MatGridListModule } from "@angular/material/grid-list"
 import { MatDividerModule } from "@angular/material/divider"
 
 @Component({
