@@ -3,11 +3,14 @@ import { ActivatedRoute, Router } from "@angular/router"
 import { Observable } from "rxjs"
 import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Collection } from "../models/collection"
+import { Item } from "../models/item"
 import { CollectionService } from "../services/collection.service"
+import { ItemService } from "../services/item.service"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatInputModule } from "@angular/material/input"
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
+import { MatListModule } from "@angular/material/list"
 
 @Component({
   selector: "app-collection-items",
@@ -16,6 +19,7 @@ import { MatIconModule } from "@angular/material/icon"
 })
 export class CollectionItemsComponent implements OnInit {
   private _collection: Observable<Collection>
+  private _items: Observable<Item[]>
   private _loading: boolean = null
   private _edit: boolean = false
   collectionForm: FormGroup
@@ -23,6 +27,7 @@ export class CollectionItemsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private collectionService: CollectionService,
+    private itemService: ItemService,
     private router: Router,
     private fb: FormBuilder
   ) {}
@@ -33,10 +38,18 @@ export class CollectionItemsComponent implements OnInit {
     this._collection = this.collectionService.get(id)
     this._collection.subscribe(
       data => {
+        this._items = this.itemService.getItems(id)
+        this._items.subscribe(
+          res => {
+            this._loading = false
+          },
+          err => {
+            this._loading = false
+          }
+        )
         this.collectionForm = this.fb.group({
           name: [data.name, Validators.required]
         })
-        this._loading = false
       },
       error => {
         this._loading = false
@@ -54,6 +67,10 @@ export class CollectionItemsComponent implements OnInit {
 
   get collection(): Observable<Collection> {
     return this._collection
+  }
+
+  get items(): Observable<Item[]> {
+    return this._items
   }
 
   handleDelete() {
