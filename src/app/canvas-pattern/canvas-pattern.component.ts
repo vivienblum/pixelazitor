@@ -56,11 +56,11 @@ export class CanvasPatternComponent implements OnInit {
     )
     pattern.forEach((row, y) => {
       row.forEach((el, x) => {
+        const msg = el ? el.toString() : "?"
         this.cx.fillText(
-          el ? el : "?",
+          msg,
           x * elementSize,
           y * elementSize + elementSize / 2,
-          elementSize,
           elementSize
         )
       })
