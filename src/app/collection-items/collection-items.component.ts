@@ -152,4 +152,25 @@ export class CollectionItemsComponent implements OnInit {
       }
     )
   }
+
+  handleDeleteItem(item: Item) {
+    this._loading = true
+    const id = parseInt(this.route.snapshot.paramMap.get("id"))
+    this.itemService.delete(id, item.id).subscribe(
+      res => {
+        this._items = this.itemService.getItems(id)
+        this._items.subscribe(
+          data => {
+            this._loading = false
+          },
+          error => {
+            this._loading = false
+          }
+        )
+      },
+      error => {
+        this._loading = false
+      }
+    )
+  }
 }
