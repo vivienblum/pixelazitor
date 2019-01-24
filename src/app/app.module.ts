@@ -18,6 +18,8 @@ import { MatInputModule } from "@angular/material/input"
 import { MatCardModule } from "@angular/material/card"
 import { MatGridListModule } from "@angular/material/grid-list"
 import { MatDividerModule } from "@angular/material/divider"
+import { MatChipsModule } from "@angular/material/chips"
+import { MatBadgeModule } from "@angular/material/badge"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -33,8 +35,9 @@ import { CanvasPatternComponent } from "./canvas-pattern/canvas-pattern.componen
 import { CanvasPatternImagesComponent } from "./canvas-pattern-images/canvas-pattern-images.component"
 import { CollectionsComponent } from "./collections/collections.component"
 import { CollectionCreationComponent } from "./collection-creation/collection-creation.component"
-import { CollectionItemsComponent } from "./collection-items/collection-items.component";
-import { ItemCreationComponent } from './item-creation/item-creation.component'
+import { CollectionItemsComponent } from "./collection-items/collection-items.component"
+import { ItemCreationComponent } from "./item-creation/item-creation.component"
+import { ColorBadgeComponent } from "./color-badge/color-badge.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -59,7 +62,8 @@ const appRoutes: Routes = [
     CollectionsComponent,
     CollectionCreationComponent,
     CollectionItemsComponent,
-    ItemCreationComponent
+    ItemCreationComponent,
+    ColorBadgeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
@@ -82,7 +86,9 @@ const appRoutes: Routes = [
     MatInputModule,
     MatCardModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatChipsModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

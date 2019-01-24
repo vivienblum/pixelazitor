@@ -11,7 +11,7 @@ import { MatInputModule } from "@angular/material/input"
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
 import { MatListModule } from "@angular/material/list"
-import { imageToFile } from "../../shared/utils/image"
+import { MatCardModule } from "@angular/material/card"
 
 @Component({
   selector: "app-collection-items",
@@ -23,6 +23,7 @@ export class CollectionItemsComponent implements OnInit {
   private _items: Observable<Item[]>
   private _loading: boolean = null
   private _edit: boolean = false
+  private _add: boolean = false
   collectionForm: FormGroup
 
   constructor(
@@ -66,6 +67,10 @@ export class CollectionItemsComponent implements OnInit {
     return this._edit
   }
 
+  get add(): boolean {
+    return this._add
+  }
+
   get collection(): Observable<Collection> {
     return this._collection
   }
@@ -88,8 +93,12 @@ export class CollectionItemsComponent implements OnInit {
     )
   }
 
-  handleEdit() {
+  handleEditChange() {
     this._edit = !this._edit
+  }
+
+  handleAddChange() {
+    this._add = !this._add
   }
 
   editCollection() {
@@ -129,14 +138,17 @@ export class CollectionItemsComponent implements OnInit {
         this._items.subscribe(
           data => {
             this._loading = false
+            this._add = false
           },
           error => {
             this._loading = false
+            this._add = false
           }
         )
       },
       err => {
         this._loading = false
+        this._add = false
       }
     )
   }
