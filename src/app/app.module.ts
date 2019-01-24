@@ -37,8 +37,7 @@ import { CollectionsComponent } from "./collections/collections.component"
 import { CollectionCreationComponent } from "./collection-creation/collection-creation.component"
 import { CollectionItemsComponent } from "./collection-items/collection-items.component"
 import { ItemCreationComponent } from "./item-creation/item-creation.component"
-import { ColorBadgeComponent } from "./color-badge/color-badge.component";
-import { FootbarComponent } from './footbar/footbar.component'
+import { ColorBadgeComponent } from "./color-badge/color-badge.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -64,8 +63,7 @@ const appRoutes: Routes = [
     CollectionCreationComponent,
     CollectionItemsComponent,
     ItemCreationComponent,
-    ColorBadgeComponent,
-    FootbarComponent
+    ColorBadgeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
