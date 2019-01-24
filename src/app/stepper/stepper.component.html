@@ -21,7 +21,7 @@
   <mat-step>
     <div class="step-item">
       <ng-template matStepLabel>Match</ng-template>
-      <app-match [image]="imagePixelate" style="max-width: 98vw"></app-match>
+      <app-match [image]="imagePixelate"></app-match>
       <div class="button-container-stepper">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Try Again!</button>
