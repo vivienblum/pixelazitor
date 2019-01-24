@@ -1,0 +1,7 @@
+<form [formGroup]="collectionForm" (ngSubmit)="createCollection()">
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Name">
+  </mat-form-field>
+
+  <button mat-button [disabled]="collectionForm.invalid" type="submit">Create</button>
+</form>

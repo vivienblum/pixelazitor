@@ -1,0 +1,43 @@
+<a class="link" [routerLink]="['/admin']">
+  <button mat-icon-button>
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</a>
+<div class="centered-content">
+  <h2 *ngIf="!edit && (collection | async) as collection">
+    {{collection.name}}
+  </h2>
+  <form *ngIf="edit" [formGroup]="collectionForm" (ngSubmit)="editCollection()">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    <button mat-button [disabled]="collectionForm.invalid" type="submit">Edit</button>
+  </form>
+  <div *ngIf="!loading" class="button-container">
+    <button mat-icon-button (click)="handleEditChange()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="handleDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+  <mat-spinner *ngIf="loading"></mat-spinner>
+
+  <button mat-button *ngIf="!add && !loading" (click)="handleAddChange()">
+    <mat-icon>add</mat-icon> Add an item
+  </button>
+
+  <app-item-creation *ngIf="add" (handleCreateItem)="addItem($event)"></app-item-creation>
+
+  <mat-list role="list">
+    <mat-list-item *ngFor="let item of items | async">
+      <img matListAvatar [src]="item.image" [alt]="item.name">
+      <h3 matLine>{{item.id}} - {{item.name}} </h3>
+      <app-color-badge [red]="item.red" [green]="item.green" [blue]="item.blue"></app-color-badge>
+      <button mat-icon-button (click)="handleDeleteItem(item)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>
