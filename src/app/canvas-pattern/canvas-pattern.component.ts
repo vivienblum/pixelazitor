@@ -18,22 +18,22 @@ export class CanvasPatternComponent implements OnInit {
   private _pattern: number[][]
   private _imageWidth: number = 0
   private _imageHeight: number = 0
-  static WIDTH = 400
-  static HEIGHT = 400
+  private _width: number = 400
+  private _height: number = 400
   private cx: CanvasRenderingContext2D
 
   @Input()
   set pattern(pattern: number[][]) {
     this._pattern = pattern
+    this._width = this._height = 0.7 * window.innerWidth
     this._imageWidth = this._pattern[0] ? this._pattern[0].length : 0
     this._imageHeight = this._pattern.length
-    console.log(this._imageWidth, this._imageHeight)
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
-    //
+
     this.cx = canvasEl.getContext("2d")
 
-    canvasEl.width = CanvasPatternComponent.WIDTH
-    canvasEl.height = CanvasPatternComponent.HEIGHT
+    canvasEl.width = this._width
+    canvasEl.height = this._height
 
     this.drawPattern(this._pattern)
   }
@@ -49,7 +49,7 @@ export class CanvasPatternComponent implements OnInit {
     //
     this.cx = canvasEl.getContext("2d")
     const elementSize = Math.round(
-      CanvasPatternComponent.HEIGHT /
+      this._height /
         (this._imageHeight > this._imageWidth
           ? this._imageHeight
           : this._imageWidth)
@@ -57,7 +57,7 @@ export class CanvasPatternComponent implements OnInit {
     pattern.forEach((row, y) => {
       row.forEach((el, x) => {
         this.cx.fillText(
-          el,
+          el ? el : "?",
           x * elementSize,
           y * elementSize + elementSize / 2,
           elementSize,
