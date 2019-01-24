@@ -82,4 +82,8 @@ export class MatchComponent implements OnInit {
   get pattern(): number[][] {
     return this._pattern
   }
+
+  get hasImage(): boolean {
+    return this._image !== null
+  }
 }

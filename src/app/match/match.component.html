@@ -1,4 +1,4 @@
-<div *ngIf="loaded === null || loaded === true">
+<div *ngIf="hasImage && loaded === null || loaded === true">
   <div class="centered-content">
     <h2>Choose your match ...</h2>
     <div class="match-button-container">
@@ -17,3 +17,8 @@
 <app-pattern *ngIf="loaded" [items]="items" [pattern]="pattern"></app-pattern>
 
 <app-items *ngIf="loaded" [items]="items"></app-items>
+
+<div *ngIf="!hasImage">
+  <h2>No image ...</h2>
+  <p>Go to Upload and choose your picture!
+</div>
