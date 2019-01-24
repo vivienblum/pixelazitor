@@ -13,7 +13,7 @@ export class ItemCreationComponent implements OnInit {
   itemForm: FormGroup
   selectedFile = null
 
-  @Output() handleCreateItem: EventEmitter<Item> = new EventEmitter()
+  @Output() handleCreateItem: EventEmitter<any> = new EventEmitter()
 
   constructor(private fb: FormBuilder) {
     this.itemForm = this.fb.group({

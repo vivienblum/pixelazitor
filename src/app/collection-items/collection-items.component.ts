@@ -128,7 +128,7 @@ export class CollectionItemsComponent implements OnInit {
     )
   }
 
-  addItem(item: Item) {
+  addItem(item: any) {
     this._loading = true
     const id = parseInt(this.route.snapshot.paramMap.get("id"))
     item.append("collection", id)
