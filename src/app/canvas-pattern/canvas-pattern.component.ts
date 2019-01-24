@@ -25,7 +25,7 @@ export class CanvasPatternComponent implements OnInit {
   @Input()
   set pattern(pattern: number[][]) {
     this._pattern = pattern
-    this._width = this._height = 0.7 * window.innerWidth
+    this._width = this._height = 0.8 * window.innerWidth
     this._imageWidth = this._pattern[0] ? this._pattern[0].length : 0
     this._imageHeight = this._pattern.length
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement

@@ -18,8 +18,8 @@ export class CanvasPixelateComponent implements OnInit {
   @ViewChild("canvas") public canvas: ElementRef
   private _amount: number
   private _image: HTMLImageElement
-  static WIDTH = 400
-  static HEIGHT = 400
+  private _width: number = 400
+  private _height: number = 400
   // @Input() amount: number
   @Input()
   set amount(amount: number) {
@@ -36,6 +36,7 @@ export class CanvasPixelateComponent implements OnInit {
   @Input()
   set image(image: HTMLImageElement) {
     this._image = image
+    this._width = this._height = 0.8 * window.innerWidth
 
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
 
@@ -45,24 +46,24 @@ export class CanvasPixelateComponent implements OnInit {
       this._image.onload = function() {
         const agrandissement = this.getAgrandissement(this._image)
         if (
-          this._image.width <= CanvasPixelateComponent.WIDTH &&
-          this._image.height <= CanvasPixelateComponent.HEIGHT
+          this._image.width <= this._width &&
+          this._image.height <= this._height
         ) {
           canvasEl.width = this._image.width
           canvasEl.height = this._image.height
-        } else if (this._image.height <= CanvasPixelateComponent.HEIGHT) {
-          canvasEl.width = CanvasPixelateComponent.WIDTH
+        } else if (this._image.height <= this._height) {
+          canvasEl.width = this._width
           canvasEl.height = this._image.height
-        } else if (this._image.width <= CanvasPixelateComponent.WIDTH) {
+        } else if (this._image.width <= this._width) {
           canvasEl.width = this._image.width
-          canvasEl.height = CanvasPixelateComponent.HEIGHT
+          canvasEl.height = this._height
         } else {
           if (this._image.width > this._image.height) {
-            canvasEl.width = CanvasPixelateComponent.WIDTH
+            canvasEl.width = this._width
             canvasEl.height = this._image.height * agrandissement
           } else {
             canvasEl.width = this._image.width * agrandissement
-            canvasEl.height = CanvasPixelateComponent.HEIGHT
+            canvasEl.height = this._height
           }
         }
 
@@ -121,20 +122,17 @@ export class CanvasPixelateComponent implements OnInit {
   }
 
   getAgrandissement(image: HTMLImageElement): number {
-    if (
-      image.width <= CanvasPixelateComponent.WIDTH &&
-      image.height <= CanvasPixelateComponent.HEIGHT
-    ) {
+    if (image.width <= this._width && image.height <= this._height) {
       return 1
-    } else if (image.height <= CanvasPixelateComponent.HEIGHT) {
-      return CanvasPixelateComponent.WIDTH / image.width
-    } else if (image.width <= CanvasPixelateComponent.WIDTH) {
-      return CanvasPixelateComponent.HEIGHT / image.height
+    } else if (image.height <= this._height) {
+      return this._width / image.width
+    } else if (image.width <= this._width) {
+      return this._height / image.height
     } else {
       if (image.width > image.height) {
-        return CanvasPixelateComponent.WIDTH / image.width
+        return this._width / image.width
       } else {
-        return CanvasPixelateComponent.HEIGHT / image.height
+        return this._height / image.height
       }
     }
   }
