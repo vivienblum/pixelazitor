@@ -1,14 +1,3 @@
 <div class="centered-content">
   <canvas class="pattern-canvas" #canvas></canvas>
-
-  <table>
-    <tbody>
-      <tr *ngFor="let row of patternImages">
-        <td *ngFor="let el of row">
-          <img *ngIf="el" [src]="baseUrl + el.image" [alt]="el.name" class="image-table">
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
 </div>
