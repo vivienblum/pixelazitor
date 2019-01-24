@@ -3,7 +3,7 @@
     <div class="step-item">
       <ng-template matStepLabel>Upload</ng-template>
       <app-upload (next)="next($event, 1)"></app-upload>
-      <div>
+      <div class="button-container-stepper">
         <button mat-button matStepperNext [disabled]="!nextButton1">Next</button>
       </div>
     </div>
@@ -12,7 +12,7 @@
     <div class="step-item">
       <ng-template matStepLabel>Pixelate</ng-template>
       <app-pixelate (next)="next($event, 2)" [image]="imageToPixelate"></app-pixelate>
-      <div>
+      <div class="button-container-stepper">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
@@ -22,7 +22,7 @@
     <div class="step-item">
       <ng-template matStepLabel>Match</ng-template>
       <app-match [image]="imagePixelate" style="max-width: 98vw"></app-match>
-      <div>
+      <div class="button-container-stepper">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Try Again!</button>
       </div>

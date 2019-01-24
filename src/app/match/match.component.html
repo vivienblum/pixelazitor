@@ -2,15 +2,17 @@
   <div class="centered-content">
     <h2>Choose your match ...</h2>
     <div class="match-button-container">
-      <button (click)="onUpload(5)" mat-raised-button color="warn"><mat-icon>color_lens</mat-icon> Colors</button>
-      <button (click)="onUpload(2)" mat-raised-button color="warn" disabled><mat-icon>local_cafe</mat-icon> Coffee caps</button>
-      <button (click)="onUpload(1)" mat-raised-button color="warn" disabled><mat-icon>weekend</mat-icon> Beer caps</button>
-      <button (click)="onUpload(3)" mat-raised-button color="warn" disabled><mat-icon>business</mat-icon> Lego</button>
+      <button (click)="onUpload(5)" mat-raised-button color="accent"><mat-icon>color_lens</mat-icon> Colors</button>
+      <button (click)="onUpload(2)" mat-raised-button color="accent" disabled><mat-icon>local_cafe</mat-icon> Coffee caps</button>
+      <button (click)="onUpload(1)" mat-raised-button color="accent" disabled><mat-icon>weekend</mat-icon> Beer caps</button>
+      <button (click)="onUpload(3)" mat-raised-button color="accent" disabled><mat-icon>business</mat-icon> Lego</button>
     </div>
   </div>
 </div>
 
 <mat-spinner *ngIf="loaded === false"></mat-spinner>
+
+<mat-divider *ngIf="loaded" style="margin-top: 20px; margin-bottom: 20px;"></mat-divider>
 
 <app-pattern *ngIf="loaded" [items]="items" [pattern]="pattern"></app-pattern>
 

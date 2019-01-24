@@ -8,6 +8,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar"
 import { MatSnackBar } from "@angular/material"
 import { Item } from "../models/item"
 import { imageToFile } from "../../shared/utils/image"
+import { MatDividerModule } from "@angular/material/divider"
 
 @Component({
   selector: "app-match",

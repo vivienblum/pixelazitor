@@ -1,7 +1,7 @@
 <div class="centered-content">
-  <h2>Upload your picture</h2>
+  <h2>Upload your image ...</h2>
   <input style="display: none" type="file" (change)="onImageSelected($event)" accept="image/png, image/jpeg" #fileInput>
-  <button mat-raised-button color="accent" (click)="fileInput.click()">
+  <button mat-raised-button class="upload-button" color="accent" (click)="fileInput.click()">
     <mat-icon>cloud_upload</mat-icon>   Pick File
   </button>
   <img *ngIf="imageSrc" [src]="imageSrc" class="image-preview">

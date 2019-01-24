@@ -1,4 +1,5 @@
 <div *ngIf="hasImage()" class="centered-content">
+  <h2>Choose your pixelization ...</h2>
   <form [formGroup]="amountForm">
     <mat-slider [min]="pixelMin" max="0.1" step="0.01" formControlName="amount" (change)="onUpdate()"></mat-slider>
   </form>

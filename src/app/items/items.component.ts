@@ -3,6 +3,7 @@ import { Item } from "../models/item"
 import { MatListModule } from "@angular/material/list"
 import { Observable } from "rxjs"
 import { environment } from "../../environments/environment"
+import { MatDividerModule } from "@angular/material/divider"
 
 @Component({
   selector: "app-items",
