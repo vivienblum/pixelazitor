@@ -1,3 +1,8 @@
+<a class="link" [routerLink]="['/admin']">
+  <button mat-icon-button>
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</a>
 <div class="centered-content">
   <h2 *ngIf="!edit && (collection | async) as collection">
     {{collection.name}}
