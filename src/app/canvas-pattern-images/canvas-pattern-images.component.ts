@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core"
+import { Component, OnInit, Input, ElementRef, ViewChild } from "@angular/core"
 import { Observable } from "rxjs"
 import { Item } from "../models/item"
 import { environment } from "../../environments/environment"
@@ -9,10 +9,16 @@ import { environment } from "../../environments/environment"
   styleUrls: ["./canvas-pattern-images.component.scss"]
 })
 export class CanvasPatternImagesComponent implements OnInit {
+  @ViewChild("canvas") public canvas: ElementRef
+  private cx: CanvasRenderingContext2D
   private _items: Item[]
   private _itemsIndexed: Item[]
   private _pattern: number[][]
   private _patternImages: Item[][]
+  private _width: number = 400
+  private _height: number = 400
+  private _imageWidth: number = 0
+  private _imageHeight: number = 0
   baseUrl = environment.baseUrl
 
   @Input()
@@ -31,6 +37,9 @@ export class CanvasPatternImagesComponent implements OnInit {
   set pattern(pattern: number[][]) {
     if (pattern != this._pattern) {
       this._pattern = pattern
+      this._width = this._height = 0.8 * window.innerWidth
+      this._imageWidth = this._pattern[0] ? this._pattern[0].length : 0
+      this._imageHeight = this._pattern.length
 
       let patternImages: Item[][] = new Array(this._pattern.length)
       this._pattern.forEach((row, y) => {
@@ -40,6 +49,13 @@ export class CanvasPatternImagesComponent implements OnInit {
         })
       })
       this._patternImages = patternImages
+      const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
+      this.cx = canvasEl.getContext("2d")
+
+      canvasEl.width = this._width
+      canvasEl.height = this._height
+
+      this.drawPattern(this._patternImages)
     }
   }
 
@@ -57,5 +73,32 @@ export class CanvasPatternImagesComponent implements OnInit {
 
   get patternImages(): Item[][] {
     return this._patternImages
+  }
+
+  drawPattern(pattern: Item[][]) {
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement
+    //
+    this.cx = canvasEl.getContext("2d")
+    const elementSize = Math.round(
+      this._height /
+        (this._imageHeight > this._imageWidth
+          ? this._imageHeight
+          : this._imageWidth)
+    )
+    pattern.forEach((row, y) => {
+      row.forEach((el, x) => {
+        const image = new Image()
+        image.src = `${this.baseUrl}${el.image}`
+        image.onload = () => {
+          this.cx.drawImage(
+            image,
+            x * elementSize,
+            y * elementSize + elementSize / 2,
+            elementSize,
+            elementSize
+          )
+        }
+      })
+    })
   }
 }
