@@ -13,7 +13,7 @@ import { environment } from "../../environments/environment"
 })
 export class PixelateComponent implements OnInit {
   amountForm: FormGroup
-  amount: number
+  private _amount: number
   pixelMin: number = environment.pixelMin
   private _image: HTMLImageElement = null
 
@@ -39,8 +39,7 @@ export class PixelateComponent implements OnInit {
   }
 
   onUpdate() {
-    this.amount = -this.amountForm.value.amount
-    // TODO send image with this.next.emit(this._image)
+    this._amount = -this.amountForm.value.amount
   }
 
   onImageChange(image) {
@@ -51,5 +50,9 @@ export class PixelateComponent implements OnInit {
 
   hasImage(): boolean {
     return this._image !== null
+  }
+
+  get amount(): number {
+    return this._amount
   }
 }

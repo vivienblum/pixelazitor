@@ -20,7 +20,7 @@ export class CanvasPixelateComponent implements OnInit {
   private _image: HTMLImageElement
   private _width: number = 400
   private _height: number = 400
-  // @Input() amount: number
+
   @Input()
   set amount(amount: number) {
     if (amount && this._amount !== amount) {
