@@ -1,0 +1,5 @@
+<form [formGroup]="itemsForm" (ngSubmit)="createItems()">
+  <input formControlName="images" type="file" (change)="handleFilesSelected($event)" accept="image/png, image/jpeg" multiple>
+
+  <button mat-button [disabled]="itemsForm.invalid" type="submit">Create</button>
+</form>

@@ -24,6 +24,7 @@ export class CollectionItemsComponent implements OnInit {
   private _loading: boolean = null
   private _edit: boolean = false
   private _add: boolean = false
+  private _addMany: boolean = false
   collectionForm: FormGroup
 
   constructor(
@@ -71,6 +72,10 @@ export class CollectionItemsComponent implements OnInit {
     return this._add
   }
 
+  get addMany(): boolean {
+    return this._addMany
+  }
+
   get collection(): Observable<Collection> {
     return this._collection
   }
@@ -99,6 +104,10 @@ export class CollectionItemsComponent implements OnInit {
 
   handleAddChange() {
     this._add = !this._add
+  }
+
+  handleAddManyChange() {
+    this._addMany = !this._addMany
   }
 
   editCollection() {
@@ -151,6 +160,33 @@ export class CollectionItemsComponent implements OnInit {
         this._add = false
       }
     )
+  }
+
+  addManyItems(data: FormData[]) {
+    this._loading = true
+    const id = parseInt(this.route.snapshot.paramMap.get("id"))
+    data.forEach(item => {
+      item.append("collection", id)
+      this.itemService.add(id, item).subscribe(
+        res => {
+          this._items = this.itemService.getItems(id)
+          this._items.subscribe(
+            data => {
+              this._loading = false
+              this._addMany = false
+            },
+            error => {
+              this._loading = false
+              this._addMany = false
+            }
+          )
+        },
+        error => {
+          this._loading = false
+          this._addMany = false
+        }
+      )
+    })
   }
 
   handleDeleteItem(item: Item) {
