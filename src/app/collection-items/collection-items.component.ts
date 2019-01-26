@@ -24,6 +24,9 @@ export class CollectionItemsComponent implements OnInit {
   private _loading: boolean = null
   private _edit: boolean = false
   private _add: boolean = false
+  private _addMany: boolean = false
+  private _loadedContent: number = null
+  private _contentLength: number = null
   collectionForm: FormGroup
 
   constructor(
@@ -71,6 +74,16 @@ export class CollectionItemsComponent implements OnInit {
     return this._add
   }
 
+  get addMany(): boolean {
+    return this._addMany
+  }
+
+  get loadingProgress(): number {
+    return this._loadedContent && this._contentLength
+      ? Math.round(this._loadedContent / this._contentLength * 100)
+      : null
+  }
+
   get collection(): Observable<Collection> {
     return this._collection
   }
@@ -99,6 +112,10 @@ export class CollectionItemsComponent implements OnInit {
 
   handleAddChange() {
     this._add = !this._add
+  }
+
+  handleAddManyChange() {
+    this._addMany = !this._addMany
   }
 
   editCollection() {
@@ -151,6 +168,44 @@ export class CollectionItemsComponent implements OnInit {
         this._add = false
       }
     )
+  }
+
+  addManyItems(data: FormData[]) {
+    this._loading = true
+    this._contentLength = data.length
+    this._loadedContent = 0
+    const id = parseInt(this.route.snapshot.paramMap.get("id"))
+    data.forEach(item => {
+      item.append("collection", id)
+      this.itemService.add(id, item).subscribe(
+        res => {
+          this._loadedContent++
+          if (this._loadedContent === this._contentLength) {
+            this._items = this.itemService.getItems(id)
+            this._items.subscribe(
+              data => {
+                this._loading = false
+                this._addMany = false
+                this._contentLength = null
+                this._loadedContent = null
+              },
+              error => {
+                this._loading = false
+                this._addMany = false
+                this._contentLength = null
+                this._loadedContent = null
+              }
+            )
+          }
+        },
+        error => {
+          this._loading = false
+          this._addMany = false
+          this._contentLength = null
+          this._loadedContent = null
+        }
+      )
+    })
   }
 
   handleDeleteItem(item: Item) {
