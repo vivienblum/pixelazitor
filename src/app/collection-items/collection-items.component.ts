@@ -25,6 +25,8 @@ export class CollectionItemsComponent implements OnInit {
   private _edit: boolean = false
   private _add: boolean = false
   private _addMany: boolean = false
+  private _loadedContent: number = null
+  private _contentLength: number = null
   collectionForm: FormGroup
 
   constructor(
@@ -74,6 +76,12 @@ export class CollectionItemsComponent implements OnInit {
 
   get addMany(): boolean {
     return this._addMany
+  }
+
+  get loadingProgress(): number {
+    return this._loadedContent && this._contentLength
+      ? Math.round(this._loadedContent / this._contentLength * 100)
+      : null
   }
 
   get collection(): Observable<Collection> {
@@ -164,26 +172,37 @@ export class CollectionItemsComponent implements OnInit {
 
   addManyItems(data: FormData[]) {
     this._loading = true
+    this._contentLength = data.length
+    this._loadedContent = 0
     const id = parseInt(this.route.snapshot.paramMap.get("id"))
     data.forEach(item => {
       item.append("collection", id)
       this.itemService.add(id, item).subscribe(
         res => {
-          this._items = this.itemService.getItems(id)
-          this._items.subscribe(
-            data => {
-              this._loading = false
-              this._addMany = false
-            },
-            error => {
-              this._loading = false
-              this._addMany = false
-            }
-          )
+          this._loadedContent++
+          if (this._loadedContent === this._contentLength) {
+            this._items = this.itemService.getItems(id)
+            this._items.subscribe(
+              data => {
+                this._loading = false
+                this._addMany = false
+                this._contentLength = null
+                this._loadedContent = null
+              },
+              error => {
+                this._loading = false
+                this._addMany = false
+                this._contentLength = null
+                this._loadedContent = null
+              }
+            )
+          }
         },
         error => {
           this._loading = false
           this._addMany = false
+          this._contentLength = null
+          this._loadedContent = null
         }
       )
     })

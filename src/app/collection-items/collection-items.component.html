@@ -22,7 +22,8 @@
     </button>
   </div>
 
-  <mat-spinner *ngIf="loading"></mat-spinner>
+  <mat-spinner *ngIf="loading && loadingProgress === null"></mat-spinner>
+  <mat-spinner *ngIf="loading && loadingProgress" mode="determinate" [value]="loadingProgress"></mat-spinner>
 
   <button mat-button *ngIf="!add && !loading" (click)="handleAddChange()">
     <mat-icon>add</mat-icon> Add an item
