@@ -58,6 +58,7 @@ export class CollectionItemsComponent implements OnInit {
       },
       error => {
         this._loading = false
+        this.router.navigate(["admin"])
       }
     )
   }
