@@ -9,7 +9,7 @@ import { Item } from "../models/item"
 })
 export class ItemsCreationComponent implements OnInit {
   itemsForm: FormGroup
-  selectedFiles = null
+  selectedFiles: FileList
 
   @Output() handleCreateItems: EventEmitter<FormData[]> = new EventEmitter()
 
@@ -26,7 +26,9 @@ export class ItemsCreationComponent implements OnInit {
 
     Array.from(this.selectedFiles).forEach(el => {
       const fd = new FormData()
-      const fileName = el.name.replace(/[^a-z0-9]/gi, "_").toLowerCase()
+      const fileName = el
+        ? el.name.replace(/[^a-z0-9]/gi, "_").toLowerCase()
+        : "tmp"
       fd.append("name", el.name)
       fd.append("image", el, `${fileName}.png`)
 

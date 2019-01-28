@@ -31,7 +31,7 @@ export class ItemService {
     )
   }
 
-  public add(idCollection: number, item: Item): Observable<Item> {
+  public add(idCollection: number, item: any): Observable<Item> {
     item.collection = idCollection
 
     return this.http.post<Item>(
