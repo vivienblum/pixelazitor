@@ -88,7 +88,9 @@ export class CanvasPatternImagesComponent implements OnInit {
     pattern.forEach((row, y) => {
       row.forEach((el, x) => {
         const image = new Image()
-        image.src = `${this.baseUrl}${el.image}`
+        image.src = el
+          ? `${this.baseUrl}${el.image}`
+          : "http://powersolutionksa.com/wp-content/uploads/2018/07/QUESTION-MARK.jpg"
         image.onload = () => {
           this.cx.drawImage(
             image,
