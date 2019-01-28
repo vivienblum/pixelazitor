@@ -176,7 +176,7 @@ export class CollectionItemsComponent implements OnInit {
     this._loadedContent = 0
     const id = parseInt(this.route.snapshot.paramMap.get("id"))
     data.forEach(item => {
-      item.append("collection", id)
+      item.append("collection", id.toString())
       this.itemService.add(id, item).subscribe(
         res => {
           this._loadedContent++
