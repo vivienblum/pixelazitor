@@ -20,6 +20,7 @@ import { MatGridListModule } from "@angular/material/grid-list"
 import { MatDividerModule } from "@angular/material/divider"
 import { MatChipsModule } from "@angular/material/chips"
 import { MatBadgeModule } from "@angular/material/badge"
+import { MatToolbarModule } from "@angular/material/toolbar"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -37,8 +38,8 @@ import { CollectionsComponent } from "./collections/collections.component"
 import { CollectionCreationComponent } from "./collection-creation/collection-creation.component"
 import { CollectionItemsComponent } from "./collection-items/collection-items.component"
 import { ItemCreationComponent } from "./item-creation/item-creation.component"
-import { ColorBadgeComponent } from "./color-badge/color-badge.component";
-import { ItemsCreationComponent } from './items-creation/items-creation.component'
+import { ColorBadgeComponent } from "./color-badge/color-badge.component"
+import { ItemsCreationComponent } from "./items-creation/items-creation.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -90,7 +91,8 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatDividerModule,
     MatChipsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,23 +4,22 @@
   </button>
 </a>
 <div class="centered-content">
-  <h2 *ngIf="!edit && (collection | async) as collection">
-    {{collection.name}}
-  </h2>
+  <mat-toolbar *ngIf="!edit && (collection | async) as collection" class="collection-header">
+    <span>{{collection.name}}</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button (click)="handleEditChange()" class="example-icon">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="handleDelete()" class="example-icon">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-toolbar>
   <form *ngIf="edit" [formGroup]="collectionForm" (ngSubmit)="editCollection()">
     <mat-form-field>
       <input matInput formControlName="name" placeholder="Name">
     </mat-form-field>
     <button mat-button [disabled]="collectionForm.invalid" type="submit">Edit</button>
   </form>
-  <div *ngIf="!loading" class="button-container">
-    <button mat-icon-button (click)="handleEditChange()">
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button mat-icon-button (click)="handleDelete()">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </div>
 
   <mat-spinner *ngIf="loading && loadingProgress === null"></mat-spinner>
   <mat-spinner *ngIf="loading && loadingProgress" mode="determinate" [value]="loadingProgress"></mat-spinner>
@@ -30,7 +29,7 @@
   </button>
 
   <button mat-button *ngIf="!addMany && !loading" (click)="handleAddManyChange()">
-    <mat-icon>add</mat-icon> Add many items
+    <mat-icon>playlist_add</mat-icon> Add many items
   </button>
 
   <app-item-creation *ngIf="add" (handleCreateItem)="addItem($event)"></app-item-creation>
