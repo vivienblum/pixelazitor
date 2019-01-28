@@ -21,6 +21,7 @@ import { MatDividerModule } from "@angular/material/divider"
 import { MatChipsModule } from "@angular/material/chips"
 import { MatBadgeModule } from "@angular/material/badge"
 import { MatToolbarModule } from "@angular/material/toolbar"
+import { MatDialogModule } from "@angular/material/dialog"
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -92,7 +93,8 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatChipsModule,
     MatBadgeModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -24,13 +24,15 @@
   <mat-spinner *ngIf="loading && loadingProgress === null"></mat-spinner>
   <mat-spinner *ngIf="loading && loadingProgress" mode="determinate" [value]="loadingProgress"></mat-spinner>
 
-  <button mat-button *ngIf="!add && !loading" (click)="handleAddChange()">
-    <mat-icon>add</mat-icon> Add an item
-  </button>
+  <div class="action-button">
+    <button mat-raised-button *ngIf="!add && !loading" (click)="handleAddChange()">
+      <mat-icon>add</mat-icon><span class="action-text"> Add an item</span>
+    </button>
 
-  <button mat-button *ngIf="!addMany && !loading" (click)="handleAddManyChange()">
-    <mat-icon>playlist_add</mat-icon> Add many items
-  </button>
+    <button mat-raised-button *ngIf="!addMany && !loading" (click)="handleAddManyChange()">
+      <mat-icon>playlist_add</mat-icon><span class="action-text"> Add many items</span>
+    </button>
+  </div>
 
   <app-item-creation *ngIf="add" (handleCreateItem)="addItem($event)"></app-item-creation>
 

@@ -7,5 +7,22 @@
 }
 
 .collection-header {
-  max-width: 80vw;
+  width: 80vw;
+}
+
+.action-button {
+  width: 80vw;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.action-button button {
+  width: 100%;
+}
+
+.action-button .action-text {
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 }
