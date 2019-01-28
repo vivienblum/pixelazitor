@@ -90,7 +90,7 @@ export class CanvasPatternImagesComponent implements OnInit {
         const image = new Image()
         image.src = el
           ? `${this.baseUrl}${el.image}`
-          : "http://powersolutionksa.com/wp-content/uploads/2018/07/QUESTION-MARK.jpg"
+          : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Question_mark_basic.svg/1024px-Question_mark_basic.svg.png"
         image.onload = () => {
           this.cx.drawImage(
             image,
