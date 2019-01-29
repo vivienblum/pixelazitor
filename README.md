@@ -1,6 +1,16 @@
+![steps](https://s2.gifyu.com/images/Webp.net-gifmakerd086505861ddfbfe.gif)
+
 # Pixelizator
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+
+## Production server
+
+[Check it out!](https://the-pixelizator.firebaseapp.com/)
+
+It's a PWA!
+
+![audits-results](https://i.imgur.com/S4pQWOS.png)
 
 ## Development server
 
