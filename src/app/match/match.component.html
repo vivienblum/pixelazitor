@@ -2,18 +2,11 @@
   <div class="centered-content">
     <h2>Choose your match ...</h2>
     <div class="match-button-container">
-      <button (click)="onUpload(5)" mat-raised-button color="accent">
-        <mat-icon>color_lens</mat-icon> Colors
-      </button>
-      <button (click)="onUpload(6)" mat-raised-button color="accent">
-        <mat-icon>business</mat-icon> Lego
-      </button>
-      <button (click)="onUpload(1)" mat-raised-button color="accent">
-        <mat-icon>weekend</mat-icon> Beer caps
-      </button>
-      <button (click)="onUpload(2)" mat-raised-button color="accent" disabled>
-        <mat-icon>local_cafe</mat-icon> Coffee caps
-      </button>
+        <span *ngFor="let collection of collections | async">
+            <button (click)="onUpload(collection.id)" mat-raised-button color="accent">
+                {{ collection.name }}
+            </button>
+        </span>
     </div>
   </div>
 </div>

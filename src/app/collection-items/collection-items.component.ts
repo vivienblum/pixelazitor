@@ -55,7 +55,8 @@ export class CollectionItemsComponent implements OnInit {
           }
         )
         this.collectionForm = this.fb.group({
-          name: [data.name, Validators.required]
+          name: [data.name, Validators.required],
+          available: [data.available, Validators.required]
         })
       },
       error => {
@@ -132,7 +133,8 @@ export class CollectionItemsComponent implements OnInit {
         this._collection.subscribe(
           data => {
             this.collectionForm = this.fb.group({
-              name: [data.name, Validators.required]
+              name: [data.name, Validators.required],
+              available: [data.available, Validators.required]
             })
             this._loading = false
             this._edit = false

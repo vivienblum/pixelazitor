@@ -12,8 +12,8 @@ export class CollectionService {
 
   constructor(private http: HttpClient) {}
 
-  public getCollections(): Observable<Collection[]> {
-    return this.http.get<Collection[]>(`${this.baseUrl}/api/collections/`)
+  public getCollections(available: boolean = null): Observable<Collection[]> {
+    return this.http.get<Collection[]>(`${this.baseUrl}/api/collections/?available=${available}`)
   }
 
   public delete(id: number): Observable<any> {

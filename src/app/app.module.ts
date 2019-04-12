@@ -22,6 +22,7 @@ import { MatChipsModule } from "@angular/material/chips"
 import { MatBadgeModule } from "@angular/material/badge"
 import { MatToolbarModule } from "@angular/material/toolbar"
 import { MatDialogModule } from "@angular/material/dialog"
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from "./app.component"
 import { HomeComponent } from "./home/home.component"
@@ -94,7 +95,8 @@ const appRoutes: Routes = [
     MatChipsModule,
     MatBadgeModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

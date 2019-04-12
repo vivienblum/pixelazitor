@@ -21,7 +21,8 @@ export class CollectionCreationComponent implements OnInit {
     private collectionService: CollectionService
   ) {
     this.collectionForm = this.fb.group({
-      name: ["", Validators.required]
+      name: ["", Validators.required],
+      available: ["", Validators.required],
     })
   }
 

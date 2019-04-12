@@ -3,6 +3,8 @@ import { MatchService } from "../services/match.service"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
+import { Collection } from "../models/collection"
+import { CollectionService } from "../services/collection.service"
 import { Observable } from "rxjs"
 import { MatSnackBarModule } from "@angular/material/snack-bar"
 import { MatSnackBar } from "@angular/material"
@@ -21,6 +23,7 @@ export class MatchComponent implements OnInit {
   private _loaded: boolean = null
   private _items: Observable<Item[]>
   private _pattern: number[][]
+  private _collections: Observable<Collection[]>
   file: File = null
 
   @Input()
@@ -34,10 +37,14 @@ export class MatchComponent implements OnInit {
 
   constructor(
     private matchService: MatchService,
+    private collectionService: CollectionService,
     public snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+      this._collections = this.collectionService.getCollections(true)
+      this._collections.subscribe()
+  }
 
   ngAfterViewInit() {}
 
@@ -86,5 +93,9 @@ export class MatchComponent implements OnInit {
 
   get hasImage(): boolean {
     return this._image !== null
+  }
+
+  get collections(): Observable<Collection[]> {
+    return this._collections
   }
 }

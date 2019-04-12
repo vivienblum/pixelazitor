@@ -4,7 +4,7 @@
   <mat-list role="list">
     <mat-list-item *ngFor="let collection of collections | async">
       <a [routerLink]="['/admin/collections', collection.id]">
-        <h3 matLine class="collection-button">{{collection.name}}</h3>
+        <h3 matLine class="collection-button">{{collection.name}} <span class="collection-badge">{{collection.available ? 'On' : 'Off' }}</span></h3>
       </a>
       <mat-divider></mat-divider>
     </mat-list-item>
