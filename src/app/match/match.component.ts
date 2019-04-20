@@ -4,6 +4,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from "@angular/material/icon"
 import { Collection } from "../models/collection"
+import { Match } from "../models/match"
 import { CollectionService } from "../services/collection.service"
 import { Observable } from "rxjs"
 import { MatSnackBarModule } from "@angular/material/snack-bar"
@@ -23,6 +24,7 @@ export class MatchComponent implements OnInit {
   private _loaded: boolean = null
   private _items: Observable<Item[]>
   private _pattern: number[][]
+  private _match: Match
   private _collections: Observable<Collection[]>
   file: File = null
 
@@ -42,8 +44,8 @@ export class MatchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-      this._collections = this.collectionService.getCollections(true)
-      this._collections.subscribe()
+    this._collections = this.collectionService.getCollections(true)
+    this._collections.subscribe()
   }
 
   ngAfterViewInit() {}
@@ -62,9 +64,27 @@ export class MatchComponent implements OnInit {
     this._loaded = false
     this.matchService.add(fd).subscribe(
       data => {
-        this._loaded = true
-        this._items = data.items
-        this._pattern = data.pattern
+        // this._loaded = true
+        this._match = data
+
+        // this._items = data.items
+        // this._pattern = data.pattern
+        let interval = setInterval(() => {
+          this.matchService.get(data.id).subscribe(data => {
+            if (data.finished) {
+              this._loaded = true
+              this._match = data
+              // console.log("finished", data)
+              // console.log(JSON.parse(data.items))
+              this._items = JSON.parse(data.items)
+              // console.log(JSON.parse(data.pattern))
+              this._pattern = JSON.parse(data.pattern).data
+              // this._pattern = JSON.parse(data.pattern)
+              clearInterval(interval)
+            }
+            console.log(data.rows_done, data.nb_rows)
+          })
+        }, 1000)
       },
       error => {
         this._loaded = null
@@ -89,6 +109,11 @@ export class MatchComponent implements OnInit {
 
   get pattern(): number[][] {
     return this._pattern
+    // return this._match.pattern
+  }
+
+  get match(): Observable<Match> {
+    return this._match
   }
 
   get hasImage(): boolean {
