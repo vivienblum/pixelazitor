@@ -24,7 +24,8 @@ export class MatchComponent implements OnInit {
   private _loaded: boolean = null
   private _items: Observable<Item[]>
   private _pattern: number[][]
-  private _match: Match
+  private _progress: number = 0
+  private _match: Observable<Match>
   private _collections: Observable<Collection[]>
   file: File = null
 
@@ -64,25 +65,18 @@ export class MatchComponent implements OnInit {
     this._loaded = false
     this.matchService.add(fd).subscribe(
       data => {
-        // this._loaded = true
-        this._match = data
-
-        // this._items = data.items
-        // this._pattern = data.pattern
         let interval = setInterval(() => {
-          this.matchService.get(data.id).subscribe(data => {
+          this._match = this.matchService.get(data.id)
+          this._match.subscribe(data => {
             if (data.finished) {
               this._loaded = true
-              this._match = data
-              // console.log("finished", data)
-              // console.log(JSON.parse(data.items))
               this._items = JSON.parse(data.items)
-              // console.log(JSON.parse(data.pattern))
               this._pattern = JSON.parse(data.pattern).data
-              // this._pattern = JSON.parse(data.pattern)
               clearInterval(interval)
             }
-            console.log(data.rows_done, data.nb_rows)
+            if (data.nb_rows) {
+              this._progress = Math.round(data.rows_done / data.nb_rows * 100)
+            }
           })
         }, 1000)
       },
@@ -107,9 +101,12 @@ export class MatchComponent implements OnInit {
     return this._items
   }
 
+  get progress(): number {
+    return this._progress
+  }
+
   get pattern(): number[][] {
     return this._pattern
-    // return this._match.pattern
   }
 
   get match(): Observable<Match> {
