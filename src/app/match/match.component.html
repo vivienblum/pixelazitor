@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<mat-progress-spinner *ngIf="loaded === false" mode="determinate" [value]="progress"></mat-progress-spinner>
+<mat-progress-spinner *ngIf="loaded === false" [mode]="loadingMode" [value]="progress"></mat-progress-spinner>
 
 <mat-divider *ngIf="loaded" style="margin-top: 20px; margin-bottom: 20px;"></mat-divider>
 

@@ -27,6 +27,7 @@ export class MatchComponent implements OnInit {
   private _progress: number = 0
   private _match: Observable<Match>
   private _collections: Observable<Collection[]>
+  private _loadingMode: string = 'indeterminate'
   file: File = null
 
   @Input()
@@ -63,6 +64,7 @@ export class MatchComponent implements OnInit {
     fd.append("delta", "100")
 
     this._loaded = false
+    this._loadingMode = 'indeterminate'
     this.matchService.add(fd).subscribe(
       data => {
         let interval = setInterval(() => {
@@ -75,6 +77,7 @@ export class MatchComponent implements OnInit {
               clearInterval(interval)
             }
             if (data.nb_rows) {
+              this._loadingMode = 'determinate'
               this._progress = Math.round(data.rows_done / data.nb_rows * 100)
             }
           })
@@ -119,5 +122,9 @@ export class MatchComponent implements OnInit {
 
   get collections(): Observable<Collection[]> {
     return this._collections
+  }
+
+  get loadingMode(): string {
+    return this._loadingMode
   }
 }

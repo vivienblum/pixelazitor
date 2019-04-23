@@ -1,5 +1,5 @@
 <h3>Items</h3>
-<mat-list role="list">
+<mat-list role="list" class="item-list-container">
   <mat-list-item *ngFor="let item of items" class="item-list">
     <img matListAvatar [src]="item.image" [alt]="item.name">
     <h3 matLine> {{item.id}} - {{item.name}} </h3>
