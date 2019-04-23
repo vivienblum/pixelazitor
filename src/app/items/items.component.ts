@@ -12,7 +12,6 @@ import { MatDividerModule } from "@angular/material/divider"
 })
 export class ItemsComponent implements OnInit {
   private _items: Observable<Item[]>
-  baseUrl = environment.baseUrl
 
   @Input()
   set items(items: Observable<Item[]>) {
