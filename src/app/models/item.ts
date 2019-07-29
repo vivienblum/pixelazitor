@@ -6,4 +6,5 @@ export interface Item {
   red: number
   blue: number
   green: number
+  quantity?: number
 }
