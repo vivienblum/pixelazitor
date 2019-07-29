@@ -1,6 +1,6 @@
 {
   "name": "pixelizator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -13,12 +13,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "github:angular/animations-builds",
-    "@angular/cdk": "github:angular/cdk-builds",
+    "@angular/cdk": "~7.3.6",
     "@angular/common": "~7.1.0",
     "@angular/compiler": "~7.1.0",
     "@angular/core": "~7.1.0",
     "@angular/forms": "~7.1.0",
-    "@angular/material": "github:angular/material2-builds",
+    "@angular/material": "~7.3.7",
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/pwa": "^0.13.8",
