@@ -29,7 +29,8 @@ export class ItemsCreationComponent implements OnInit {
       const fileName = el
         ? el.name.replace(/[^a-z0-9]/gi, "_").toLowerCase()
         : "tmp"
-      fd.append("name", el.name)
+
+      fd.append("name", el.name.split('.').slice(0, -1).join('.'))
       fd.append("image", el, `${fileName}.png`)
 
       data.push(fd)

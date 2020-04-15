@@ -81,7 +81,7 @@ export class MatchComponent implements OnInit {
               this._progress = Math.round(data.rows_done / data.nb_rows * 100)
             }
           })
-        }, 3000)
+        }, 1000)
       },
       error => {
         this._loaded = null
