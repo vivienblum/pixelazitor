@@ -45,6 +45,10 @@ export class ItemComponent implements OnInit {
     return this._edit
   }
 
+  get loading(): boolean {
+    return this._loading
+  }
+
   handleEditChange() {
       this._edit = !this._edit
   }
