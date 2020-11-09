@@ -1,0 +1,11 @@
+.item {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    &-image {
+        object-fit: cover;
+        height: 80px;
+        width: 80px;
+    }
+}

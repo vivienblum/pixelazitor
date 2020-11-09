@@ -2,6 +2,9 @@
   <mat-form-field>
     <input matInput formControlName="name" placeholder="Name">
   </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="popularity" placeholder="Popularity" type="number">
+  </mat-form-field>
   <input formControlName="image" type="file" (change)="handleFileSelected($event)" accept="image/png, image/jpeg">
 
   <button mat-button [disabled]="itemForm.invalid" type="submit">Create</button>
