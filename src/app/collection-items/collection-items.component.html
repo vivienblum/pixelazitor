@@ -19,6 +19,7 @@
       <input matInput formControlName="name" placeholder="Name">
     </mat-form-field>
     <mat-checkbox formControlName="available">Available</mat-checkbox>
+    <mat-checkbox formControlName="has_popularity">Has Popularity</mat-checkbox>
     <mat-form-field>
       <input matInput formControlName="delta" placeholder="Delta" type="number">
     </mat-form-field>
@@ -42,14 +43,9 @@
 
   <app-items-creation *ngIf="addMany" (handleCreateItems)="addManyItems($event)"></app-items-creation>
 
-  <mat-list role="list">
-    <mat-list-item *ngFor="let item of items | async">
-      <img matListAvatar [src]="item.image" [alt]="item.name">
-      <h3 matLine>{{item.id}} - {{item.name}} </h3>
-      <app-color-badge [red]="item.red" [green]="item.green" [blue]="item.blue"></app-color-badge>
-      <button mat-icon-button (click)="handleDeleteItem(item)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-list-item>
-  </mat-list>
+  <ul class="items-list">
+    <li *ngFor="let item of items | async">
+      <app-item [item]="item"></app-item>
+    </li>
+  </ul>
 </div>

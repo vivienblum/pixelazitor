@@ -18,6 +18,7 @@ export class ItemCreationComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.itemForm = this.fb.group({
       name: ["", Validators.required],
+      popularity: ["", Validators.required],
       image: ["", Validators.required]
     })
   }
@@ -29,6 +30,7 @@ export class ItemCreationComponent implements OnInit {
     const fd = new FormData()
     const fileName = formModel.name.replace(/[^a-z0-9]/gi, "_").toLowerCase()
     fd.append("name", formModel.name)
+    fd.append("popularity", formModel.popularity)
     fd.append("image", this.selectedFile, `${fileName}.png`)
     this.handleCreateItem.emit(fd)
   }

@@ -23,6 +23,7 @@ export class CollectionCreationComponent implements OnInit {
     this.collectionForm = this.fb.group({
       name: ["", Validators.required],
       available: ["", Validators.required],
+      has_popularity: ["", Validators.required],
       delta: ["", Validators.required],
     })
   }
