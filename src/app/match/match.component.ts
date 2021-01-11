@@ -72,7 +72,9 @@ export class MatchComponent implements OnInit {
           this._match.subscribe(data => {
             if (data.finished) {
               this._loaded = true
-              this._items = JSON.parse(data.items)
+              this._items = JSON.parse(data.items).sort((a, b) => {
+                  return a.name < b.name ? -1 : 1;
+              })
               this._pattern = JSON.parse(data.pattern).data
               clearInterval(interval)
             }
