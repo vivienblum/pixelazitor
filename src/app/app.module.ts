@@ -34,6 +34,7 @@ import { StepperComponent } from "./stepper/stepper.component"
 import { MatchComponent } from "./match/match.component"
 import { ItemsComponent } from "./items/items.component"
 import { ItemComponent } from "./item/item.component"
+import { ItemListComponent } from "./item-list/item-list.component"
 import { PatternComponent } from "./pattern/pattern.component"
 import { CanvasPatternComponent } from "./canvas-pattern/canvas-pattern.component"
 import { CanvasPatternImagesComponent } from "./canvas-pattern-images/canvas-pattern-images.component"
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     MatchComponent,
     ItemsComponent,
     ItemComponent,
+    ItemListComponent,
     PatternComponent,
     CanvasPatternComponent,
     CanvasPatternImagesComponent,
