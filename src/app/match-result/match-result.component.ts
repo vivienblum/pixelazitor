@@ -23,6 +23,7 @@ export class MatchResultComponent implements OnInit {
   private _progress: number = 0
   private _match: Observable<Match>
   private _loadingMode: string = "indeterminate"
+  private _selectedItem: number = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -68,5 +69,13 @@ export class MatchResultComponent implements OnInit {
 
   get loadingMode(): string {
     return this._loadingMode
+  }
+
+  get selectedItem(): number {
+    return this._selectedItem;
+  }
+
+  handleFocusItem(id: number) {
+    this._selectedItem = id;
   }
 }

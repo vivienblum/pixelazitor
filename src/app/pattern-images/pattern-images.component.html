@@ -1,0 +1,5 @@
+<div *ngFor="let row of pattern" class="items-row">
+  <div *ngFor="let item of row" class="items-row-cell" [ngStyle]="getStyle()">
+    <img [src]="getItemImage(item)" [ngClass]="{'image-focused': item === selectedItem, 'image-not-focused': selectedItem !== null && item !== selectedItem}" />
+  </div>
+</div>

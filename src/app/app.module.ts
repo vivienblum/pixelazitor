@@ -36,15 +36,13 @@ import { MatchResultComponent } from "./match-result/match-result.component"
 import { ItemsComponent } from "./items/items.component"
 import { ItemComponent } from "./item/item.component"
 import { ItemListComponent } from "./item-list/item-list.component"
-import { PatternComponent } from "./pattern/pattern.component"
-import { CanvasPatternComponent } from "./canvas-pattern/canvas-pattern.component"
-import { CanvasPatternImagesComponent } from "./canvas-pattern-images/canvas-pattern-images.component"
 import { CollectionsComponent } from "./collections/collections.component"
 import { CollectionCreationComponent } from "./collection-creation/collection-creation.component"
 import { CollectionItemsComponent } from "./collection-items/collection-items.component"
 import { ItemCreationComponent } from "./item-creation/item-creation.component"
 import { ColorBadgeComponent } from "./color-badge/color-badge.component"
-import { ItemsCreationComponent } from "./items-creation/items-creation.component"
+import { ItemsCreationComponent } from "./items-creation/items-creation.component";
+import { PatternImagesComponent } from './pattern-images/pattern-images.component'
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -67,15 +65,13 @@ const appRoutes: Routes = [
     ItemsComponent,
     ItemComponent,
     ItemListComponent,
-    PatternComponent,
-    CanvasPatternComponent,
-    CanvasPatternImagesComponent,
     CollectionsComponent,
     CollectionCreationComponent,
     CollectionItemsComponent,
     ItemCreationComponent,
     ColorBadgeComponent,
-    ItemsCreationComponent
+    ItemsCreationComponent,
+    PatternImagesComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, { enableTracing: true }),

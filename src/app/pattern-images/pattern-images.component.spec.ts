@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CanvasPatternComponent } from './canvas-pattern.component';
+import { PatternImagesComponent } from './pattern-images.component';
 
-describe('CanvasPatternComponent', () => {
-  let component: CanvasPatternComponent;
-  let fixture: ComponentFixture<CanvasPatternComponent>;
+describe('PatternImagesComponent', () => {
+  let component: PatternImagesComponent;
+  let fixture: ComponentFixture<PatternImagesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CanvasPatternComponent ]
+      declarations: [ PatternImagesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CanvasPatternComponent);
+    fixture = TestBed.createComponent(PatternImagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

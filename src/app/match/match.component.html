@@ -13,12 +13,6 @@
 
 <mat-progress-spinner *ngIf="loaded === false" [mode]="loadingMode" [value]="progress"></mat-progress-spinner>
 
-<mat-divider *ngIf="loaded" style="margin-top: 20px; margin-bottom: 20px;"></mat-divider>
-
-<app-pattern *ngIf="loaded" [items]="items" [pattern]="pattern"></app-pattern>
-
-<app-items *ngIf="loaded" [items]="items"></app-items>
-
 <div *ngIf="!hasImage">
   <h2>No image ...</h2>
   <p>Go to Upload and choose your picture!
