@@ -32,6 +32,7 @@ import { PixelateComponent } from "./pixelate/pixelate.component"
 import { CanvasPixelateComponent } from "./canvas-pixelate/canvas-pixelate.component"
 import { StepperComponent } from "./stepper/stepper.component"
 import { MatchComponent } from "./match/match.component"
+import { MatchResultComponent } from "./match-result/match-result.component"
 import { ItemsComponent } from "./items/items.component"
 import { ItemComponent } from "./item/item.component"
 import { ItemListComponent } from "./item-list/item-list.component"
@@ -48,6 +49,7 @@ import { ItemsCreationComponent } from "./items-creation/items-creation.componen
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "upload", component: StepperComponent },
+  { path: "match/:id", component: MatchResultComponent },
   { path: "admin", component: CollectionsComponent },
   { path: "admin/collections/:id", component: CollectionItemsComponent }
 ]
@@ -61,6 +63,7 @@ const appRoutes: Routes = [
     CanvasPixelateComponent,
     StepperComponent,
     MatchComponent,
+    MatchResultComponent,
     ItemsComponent,
     ItemComponent,
     ItemListComponent,
