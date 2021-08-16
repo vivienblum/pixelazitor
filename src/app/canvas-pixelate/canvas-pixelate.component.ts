@@ -15,7 +15,7 @@ import {
   styles: ["./canvas-pixelate.component.scss"]
 })
 export class CanvasPixelateComponent implements OnInit {
-  @ViewChild("canvas") public canvas: ElementRef
+  @ViewChild("canvas", { static: true }) public canvas: ElementRef
   private _amount: number
   private _image: HTMLImageElement
   private _width: number = 400
