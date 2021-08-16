@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from "@angular/core"
+import { Router } from "@angular/router"
 import { MatchService } from "../services/match.service"
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatButtonModule } from "@angular/material/button"
@@ -40,6 +41,7 @@ export class MatchComponent implements OnInit {
   }
 
   constructor(
+    private router: Router,
     private matchService: MatchService,
     private collectionService: CollectionService,
     public snackBar: MatSnackBar
@@ -77,6 +79,7 @@ export class MatchComponent implements OnInit {
               })
               this._pattern = JSON.parse(data.pattern).data
               clearInterval(interval)
+              this.router.navigate(['/match', data.id])
             }
             if (data.nb_rows) {
               this._loadingMode = "determinate"
