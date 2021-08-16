@@ -1,0 +1,5 @@
+<div *ngFor="let row of pattern" class="items-row">
+  <div *ngFor="let item of row" class="items-row-cell" [ngStyle]="getStyle()">
+    <img [src]="getItemImage(item)" />
+  </div>
+</div>
