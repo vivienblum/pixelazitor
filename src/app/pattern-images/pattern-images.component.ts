@@ -12,6 +12,7 @@ export class PatternImagesComponent implements OnInit {
   private _itemsIndexed: Item[];
   private _pattern: number[][];
   private _sizeImage: number;
+  private _selectedItem: number;
 
   @Input()
   set items(items: Item[]) {
@@ -29,6 +30,11 @@ export class PatternImagesComponent implements OnInit {
   @Input()
   set pattern(pattern: number[][]) {
     this._pattern = pattern
+  }
+
+  @Input()
+  set selectedItem(selectedItem: number) {
+    this._selectedItem = selectedItem;
   }
 
   constructor() { }
@@ -57,6 +63,10 @@ export class PatternImagesComponent implements OnInit {
 
   get pattern(): number[][] {
     return this._pattern
+  }
+
+  get selectedItem(): number {
+    return this._selectedItem;
   }
 
   getItemImage(id: number) {

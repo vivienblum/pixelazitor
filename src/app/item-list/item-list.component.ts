@@ -13,6 +13,7 @@ import { MatDividerModule } from "@angular/material/divider"
 export class ItemListComponent implements OnInit {
   private _item: Item
   private _complete: boolean = false
+  private _focused: boolean = false
 
   constructor() {}
 
@@ -23,12 +24,21 @@ export class ItemListComponent implements OnInit {
     this._item = item
   }
 
+  @Input()
+  set focused(focused: boolean) {
+    this._focused = focused
+  }
+
   get item(): Item {
     return this._item
   }
 
   get complete(): boolean {
     return this._complete
+  }
+
+  get focused(): boolean {
+    return this._focused
   }
 
   handleCompleteChange() {

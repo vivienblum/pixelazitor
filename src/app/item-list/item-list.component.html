@@ -1,4 +1,4 @@
-  <mat-list-item *ngIf="!complete" class="item-list">
+  <mat-list-item *ngIf="!complete" [ngClass]="{'item-list': true, 'item-focused': focused}">
     <img matListAvatar [src]="item.image" [alt]="item.name">
     <h3 matLine> {{item.id}} - {{item.name}} </h3>
     <p *ngIf="item.quantity">{{item.quantity}}</p>

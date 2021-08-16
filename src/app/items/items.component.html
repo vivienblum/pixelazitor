@@ -1,5 +1,5 @@
 <mat-list role="list" class="item-list-container">
   <ng-container *ngFor="let item of items">
-    <app-item-list [item]="item"></app-item-list>
+    <app-item-list [item]="item" (click)="clickItem(item.id)" [focused]="item.id === selectedItem"></app-item-list>
   </ng-container>
 </mat-list>

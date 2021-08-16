@@ -1,3 +1,11 @@
 .item-list {
-  max-width: 90%;
+  cursor: pointer;
+}
+
+.item-list:hover {
+  background-color: grey;
+}
+
+.item-focused {
+  background-color: #69f0ae;
 }

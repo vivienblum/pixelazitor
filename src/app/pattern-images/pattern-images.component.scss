@@ -6,3 +6,11 @@
 .items-row {
   display: flex;
 }
+
+.image-focused {
+  background-color: #69f0ae;
+}
+
+.image-not-focused {
+  filter: brightness(25%);
+}

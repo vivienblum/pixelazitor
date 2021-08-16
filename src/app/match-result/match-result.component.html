@@ -2,8 +2,8 @@
   <mat-progress-spinner *ngIf="loaded === false" [mode]="loadingMode" [value]="progress"></mat-progress-spinner>
 
   <div class="result-container">
-    <app-pattern-images *ngIf="loaded" [items]="items" [pattern]="pattern" class="pattern-container"></app-pattern-images>
+    <app-pattern-images *ngIf="loaded" [items]="items" [pattern]="pattern" [selectedItem]="selectedItem" class="pattern-container"></app-pattern-images>
 
-    <app-items *ngIf="loaded" [items]="items" class="items-container"></app-items>
+    <app-items *ngIf="loaded" [items]="items" class="items-container" (handleFocusItem)="handleFocusItem($event)"></app-items>
   </div>
 </div>
