@@ -40,6 +40,9 @@ export class PatternImagesComponent implements OnInit {
     const nbColumns = this._pattern[0].length;
     if (nbRows > nbColumns) {
       this._sizeImage = Math.floor(0.80*window.screen.availHeight/nbRows);
+    } else if (nbRows === nbColumns) {
+      const size = Math.min(0.80*window.screen.availHeight, 0.7*window.screen.availWidth);
+      this._sizeImage = Math.floor(size/nbColumns);
     } else {
       this._sizeImage = Math.floor(0.7*window.screen.availWidth/nbColumns);
     }
