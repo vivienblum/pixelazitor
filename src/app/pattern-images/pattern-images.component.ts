@@ -70,6 +70,8 @@ export class PatternImagesComponent implements OnInit {
   }
 
   getItemImage(id: number) {
-    return this._itemsIndexed[id].image;
+    const url = this._itemsIndexed[id].image;
+
+    return url.substring(0, url.lastIndexOf('?') + 1);
   }
 }
