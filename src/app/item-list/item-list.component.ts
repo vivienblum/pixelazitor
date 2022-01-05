@@ -41,6 +41,12 @@ export class ItemListComponent implements OnInit {
     return this._focused
   }
 
+  get image(): string {
+    const url = this._item.image;
+
+    return url.substring(0, url.lastIndexOf('?') + 1);
+  }
+
   handleCompleteChange() {
     if(confirm(`Have you collected all the ${this._item.name} items?`)) {
       this._complete = true
