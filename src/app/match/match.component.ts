@@ -62,7 +62,7 @@ export class MatchComponent implements OnInit {
     const fd = new FormData()
     const image = imageToFile(this._image, "")
     fd.append("image", image, image.name)
-    fd.append("collection", collection.toString())
+    fd.append("collection_id", collection.toString())
     fd.append("delta", "100")
 
     this._loaded = false

@@ -42,9 +42,7 @@ export class ItemListComponent implements OnInit {
   }
 
   get image(): string {
-    const url = this._item.image;
-
-    return url.substring(0, url.lastIndexOf('?') + 1);
+    return this._item.image_url;
   }
 
   handleCompleteChange() {

@@ -13,10 +13,10 @@ export class MatchService {
   constructor(private http: HttpClient) {}
 
   public add(fd: FormData) {
-    return this.http.post<any>(`${this.baseUrl}/api/matches/`, fd)
+    return this.http.post<any>(`${this.baseUrl}/api/transformations/`, fd)
   }
 
   public get(id: number): Observable<Match> {
-    return this.http.get<Match>(`${this.baseUrl}/api/matches/${id}/`)
+    return this.http.get<Match>(`${this.baseUrl}/api/transformations/${id}/`)
   }
 }

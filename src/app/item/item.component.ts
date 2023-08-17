@@ -57,7 +57,7 @@ export class ItemComponent implements OnInit {
       this._loading = true
       const item = this.itemForm.value
       item.id = this._item.id
-      this.itemService.update(this._item.collection, item).subscribe(
+      this.itemService.update(this._item.collection_id, item).subscribe(
           res => {
               this._item.name = res.name
               this._item.popularity = res.popularity

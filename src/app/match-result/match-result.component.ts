@@ -35,13 +35,9 @@ export class MatchResultComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get("id"));
     this._match = this.matchService.get(id)
     this._match.subscribe(data => {
-      if (data.finished) {
-        this._loaded = true;
-        this._items = JSON.parse(data.items).sort((a, b) => {
-            return a.name < b.name ? -1 : 1;
-        })
-        this._pattern = JSON.parse(data.pattern).data
-      }
+    this._loaded = true;
+    this._items = data.items;
+    this._pattern = data.pattern;
     })
   }
 
