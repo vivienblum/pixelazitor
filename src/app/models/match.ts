@@ -1,3 +1,5 @@
+import {Item} from "./item";
+
 export interface Match {
   id: number
   image: string
@@ -6,6 +8,6 @@ export interface Match {
   finished: boolean
   rows_done: number
   nb_rows: number
-  pattern?: string
-  items?: string
+  pattern?: number[][]
+  items?: Item[]
 }

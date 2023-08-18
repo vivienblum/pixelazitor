@@ -18,7 +18,7 @@ import { MatBadgeModule } from "@angular/material/badge"
 })
 export class MatchResultComponent implements OnInit {
   private _loaded: boolean = null
-  private _items: Observable<Item[]>
+  private _items: Item[]
   private _pattern: number[][]
   private _progress: number = 0
   private _match: Observable<Match>
@@ -35,9 +35,9 @@ export class MatchResultComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get("id"));
     this._match = this.matchService.get(id)
     this._match.subscribe(data => {
-    this._loaded = true;
-    this._items = data.items;
-    this._pattern = data.pattern;
+      this._loaded = true;
+      this._pattern = data.pattern;
+      this._items = data.items;
     })
   }
 
@@ -47,7 +47,7 @@ export class MatchResultComponent implements OnInit {
     return this._loaded
   }
 
-  get items(): Observable<Item[]> {
+  get items(): Item[] {
     return this._items
   }
 

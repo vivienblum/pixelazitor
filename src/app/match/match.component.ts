@@ -69,24 +69,10 @@ export class MatchComponent implements OnInit {
     this._loadingMode = "indeterminate"
     this.matchService.add(fd).subscribe(
       data => {
-        let interval = setInterval(() => {
-          this._match = this.matchService.get(data.id)
-          this._match.subscribe(data => {
-            if (data.finished) {
-              this._loaded = true
-              this._items = JSON.parse(data.items).sort((a, b) => {
-                  return a.name < b.name ? -1 : 1;
-              })
-              this._pattern = JSON.parse(data.pattern).data
-              clearInterval(interval)
-              this.router.navigate(['/match', data.id])
-            }
-            if (data.nb_rows) {
-              this._loadingMode = "determinate"
-              this._progress = Math.round(data.rows_done / data.nb_rows * 100)
-            }
-          })
-        }, 1000)
+          if (data.id) {
+            this._loaded = true;
+            this.router.navigate(['/match', data.id])
+          }
       },
       error => {
         this._loaded = null
