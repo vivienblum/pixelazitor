@@ -9,7 +9,7 @@ import { Match } from '../models/match';
 import { CollectionService } from '../services/collection.service';
 import { Observable } from 'rxjs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Item } from '../models/item';
 import { imageToFile } from '../../shared/utils/image';
 import { MatDividerModule } from '@angular/material/divider';
