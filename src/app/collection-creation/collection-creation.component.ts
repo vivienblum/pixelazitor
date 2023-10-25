@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { CollectionService } from '../services/collection.service';
@@ -16,13 +16,13 @@ import { MatButtonModule } from '@angular/material/button';
     styleUrls: ['./collection-creation.component.scss'],
 })
 export class CollectionCreationComponent implements OnInit {
-    collectionForm: FormGroup;
+    collectionForm: UntypedFormGroup;
 
     @Output()
     handleCreateCollection: EventEmitter<Collection> = new EventEmitter();
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private collectionService: CollectionService
     ) {
         this.collectionForm = this.fb.group({

@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { Collection } from '../models/collection';
@@ -34,14 +34,14 @@ export class CollectionItemsComponent implements OnInit {
     private _addMany: boolean = false;
     private _loadedContent: number = null;
     private _contentLength: number = null;
-    collectionForm: FormGroup;
+    collectionForm: UntypedFormGroup;
 
     constructor(
         private route: ActivatedRoute,
         private collectionService: CollectionService,
         private itemService: ItemService,
         private router: Router,
-        private fb: FormBuilder
+        private fb: UntypedFormBuilder
     ) {}
 
     ngOnInit() {

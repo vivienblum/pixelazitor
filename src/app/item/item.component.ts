@@ -8,8 +8,8 @@ import { environment } from '../../environments/environment';
 import { MatDividerModule } from '@angular/material/divider';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 
@@ -22,12 +22,12 @@ export class ItemComponent implements OnInit {
     private _item: Item;
     private _loading: boolean = null;
     private _edit: boolean = false;
-    itemForm: FormGroup;
+    itemForm: UntypedFormGroup;
 
     constructor(
         private route: ActivatedRoute,
         private itemService: ItemService,
-        private fb: FormBuilder
+        private fb: UntypedFormBuilder
     ) {}
 
     @Input()

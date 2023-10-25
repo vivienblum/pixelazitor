@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
@@ -17,7 +17,7 @@ import { environment } from '../../environments/environment';
     styleUrls: ['./pixelate.component.scss'],
 })
 export class PixelateComponent implements OnInit {
-    amountForm: FormGroup;
+    amountForm: UntypedFormGroup;
     private _amount: number;
     pixelMin: number = environment.pixelMin;
     private _image: HTMLImageElement = null;
@@ -29,7 +29,7 @@ export class PixelateComponent implements OnInit {
         this._image = image;
     }
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: UntypedFormBuilder) {
         this.amountForm = this.fb.group({
             amount: -0.2,
         });
