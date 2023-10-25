@@ -11,7 +11,7 @@ import {
 @Component({
     selector: 'app-canvas-pixelate',
     templateUrl: './canvas-pixelate.component.html',
-    styles: ['./canvas-pixelate.component.scss'],
+    styleUrls: ['./canvas-pixelate.component.scss'],
 })
 export class CanvasPixelateComponent implements OnInit {
     @ViewChild('canvas', { static: true }) public canvas: ElementRef;
