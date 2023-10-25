@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 import { CollectionService } from '../services/collection.service';
 import { Collection } from '../models/collection';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 
 @Component({
     selector: 'app-collection-creation',
