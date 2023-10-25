@@ -1,22 +1,48 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
-<form *ngIf="edit && item && !loading" [formGroup]="itemForm" (ngSubmit)="editItem()"  class="item">
-  <mat-form-field>
-    <input matInput formControlName="name" placeholder="Name">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput formControlName="popularity" placeholder="Popularity" type="number">
-  </mat-form-field>
-  <button mat-button [disabled]="itemForm.invalid" type="submit">Edit</button>
+<form
+    *ngIf="edit && item && !loading"
+    [formGroup]="itemForm"
+    (ngSubmit)="editItem()"
+    class="item"
+>
+    <mat-form-field>
+        <input matInput formControlName="name" placeholder="Name" />
+    </mat-form-field>
+    <mat-form-field>
+        <input
+            matInput
+            formControlName="popularity"
+            placeholder="Popularity"
+            type="number"
+        />
+    </mat-form-field>
+    <button mat-button [disabled]="itemForm.invalid" type="submit">Edit</button>
 </form>
 <div *ngIf="!edit && item && !loading" class="item">
-    <img class="item-image" [src]="item.image_url" [alt]="item.name">
-    <h3 matLine>{{item.id}} - {{item.name}} </h3>
-    <p *ngIf="item.popularity">{{item.popularity}}</p>
-    <app-color-badge [red]="item.ab_red" [green]="item.ab_green" [blue]="item.ab_blue"></app-color-badge>
-    <app-color-badge [red]="item.a_red" [green]="item.a_green" [blue]="item.a_blue"></app-color-badge>
-    <app-color-badge [red]="item.d_red" [green]="item.d_green" [blue]="item.d_blue"></app-color-badge>
+    <img class="item-image" [src]="item.image_url" [alt]="item.name" />
+    <h3 matLine>{{ item.id }} - {{ item.name }}</h3>
+    <p *ngIf="item.popularity">{{ item.popularity }}</p>
+    <app-color-badge
+        [red]="item.ab_red"
+        [green]="item.ab_green"
+        [blue]="item.ab_blue"
+    ></app-color-badge>
+    <app-color-badge
+        [red]="item.a_red"
+        [green]="item.a_green"
+        [blue]="item.a_blue"
+    ></app-color-badge>
+    <app-color-badge
+        [red]="item.d_red"
+        [green]="item.d_green"
+        [blue]="item.d_blue"
+    ></app-color-badge>
     <div>
-        <button mat-icon-button (click)="handleEditChange()" class="example-icon">
+        <button
+            mat-icon-button
+            (click)="handleEditChange()"
+            class="example-icon"
+        >
             <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button (click)="handleDeleteItem()">

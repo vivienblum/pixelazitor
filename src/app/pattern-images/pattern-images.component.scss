@@ -1,16 +1,16 @@
 .items-row-cell > img {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .items-row {
-  display: flex;
+    display: flex;
 }
 
 .image-focused {
-  background-color: #69f0ae;
+    background-color: #69f0ae;
 }
 
 .image-not-focused {
-  filter: brightness(25%);
+    filter: brightness(25%);
 }

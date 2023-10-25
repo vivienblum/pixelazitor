@@ -1,13 +1,23 @@
 <div *ngIf="hasImage()" class="centered-content">
-  <h2>Choose your pixelization ...</h2>
-  <form [formGroup]="amountForm">
-    <mat-slider [min]="pixelMin" max="0" step="0.005" formControlName="amount" (change)="onUpdate()"></mat-slider>
-  </form>
+    <h2>Choose your pixelization ...</h2>
+    <form [formGroup]="amountForm">
+        <mat-slider
+            [min]="pixelMin"
+            max="0"
+            step="0.005"
+            formControlName="amount"
+            (change)="onUpdate()"
+        ></mat-slider>
+    </form>
 
-  <app-canvas-pixelate [image]="image" [amount]="amount" (handleImageChange)="onImageChange($event)"></app-canvas-pixelate>
+    <app-canvas-pixelate
+        [image]="image"
+        [amount]="amount"
+        (handleImageChange)="onImageChange($event)"
+    ></app-canvas-pixelate>
 </div>
 
-<div *ngIf="!hasImage()" >
-  <h2>No image ...</h2>
-  <p>Go to Upload and choose your picture!
+<div *ngIf="!hasImage()">
+    <h2>No image ...</h2>
+    <p>Go to Upload and choose your picture!</p>
 </div>

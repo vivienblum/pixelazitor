@@ -1,9 +1,24 @@
 <div class="centered-content">
-  <mat-progress-spinner *ngIf="loaded === false" [mode]="loadingMode" [value]="progress"></mat-progress-spinner>
+    <mat-progress-spinner
+        *ngIf="loaded === false"
+        [mode]="loadingMode"
+        [value]="progress"
+    ></mat-progress-spinner>
 
-  <div class="result-container">
-    <app-pattern-images *ngIf="loaded" [items]="items" [pattern]="pattern" [selectedItem]="selectedItem" class="pattern-container"></app-pattern-images>
+    <div class="result-container">
+        <app-pattern-images
+            *ngIf="loaded"
+            [items]="items"
+            [pattern]="pattern"
+            [selectedItem]="selectedItem"
+            class="pattern-container"
+        ></app-pattern-images>
 
-    <app-items *ngIf="loaded" [items]="items" class="items-container" (handleFocusItem)="handleFocusItem($event)"></app-items>
-  </div>
+        <app-items
+            *ngIf="loaded"
+            [items]="items"
+            class="items-container"
+            (handleFocusItem)="handleFocusItem($event)"
+        ></app-items>
+    </div>
 </div>
