@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  baseUrl: "http://0.0.0.0",
-  pixelMin: -0.2
-}
+    production: false,
+    baseUrl: 'http://0.0.0.0',
+    pixelMin: -0.2,
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

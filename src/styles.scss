@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/purple-green.css";
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 
 // html {
 //   height: 100%;
@@ -10,17 +10,17 @@ $light-background: #fdd835;
 $dark-background: #fdd835;
 
 body {
-  background-color: #424242;
-  color: white;
+    background-color: #424242;
+    color: white;
 }
 
 .centered-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .link {
-  color: white;
+    color: white;
 }

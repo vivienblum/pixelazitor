@@ -1,9 +1,17 @@
-  <mat-list-item *ngIf="!complete" [ngClass]="{'item-list': true, 'item-focused': focused}">
-    <img matListAvatar [src]="image" [alt]="item.name">
-    <h3 matLine> {{item.id}} - {{item.name}} </h3>
-    <p *ngIf="item.quantity">{{item.quantity}}</p>
-    <button mat-icon-button ng-confirm-click="Coucou" (click)="handleCompleteChange()" class="example-icon">
+<mat-list-item
+    *ngIf="!complete"
+    [ngClass]="{ 'item-list': true, 'item-focused': focused }"
+>
+    <img matListAvatar [src]="image" [alt]="item.name" />
+    <h3 matLine>{{ item.id }} - {{ item.name }}</h3>
+    <p *ngIf="item.quantity">{{ item.quantity }}</p>
+    <button
+        mat-icon-button
+        ng-confirm-click="Coucou"
+        (click)="handleCompleteChange()"
+        class="example-icon"
+    >
         <mat-icon>check_circle</mat-icon>
     </button>
     <mat-divider></mat-divider>
-  </mat-list-item>
+</mat-list-item>

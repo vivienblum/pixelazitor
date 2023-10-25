@@ -1,19 +1,27 @@
-<div *ngIf="hasImage && loaded === null || loaded === true">
-  <div class="centered-content">
-    <h2>Choose your match ...</h2>
-    <div class="match-button-container">
-        <span *ngFor="let collection of collections | async">
-            <button (click)="onUpload(collection.id)" mat-raised-button color="accent">
-                {{ collection.name }}
-            </button>
-        </span>
+<div *ngIf="(hasImage && loaded === null) || loaded === true">
+    <div class="centered-content">
+        <h2>Choose your match ...</h2>
+        <div class="match-button-container">
+            <span *ngFor="let collection of collections | async">
+                <button
+                    (click)="onUpload(collection.id)"
+                    mat-raised-button
+                    color="accent"
+                >
+                    {{ collection.name }}
+                </button>
+            </span>
+        </div>
     </div>
-  </div>
 </div>
 
-<mat-progress-spinner *ngIf="loaded === false" [mode]="loadingMode" [value]="progress"></mat-progress-spinner>
+<mat-progress-spinner
+    *ngIf="loaded === false"
+    [mode]="loadingMode"
+    [value]="progress"
+></mat-progress-spinner>
 
 <div *ngIf="!hasImage">
-  <h2>No image ...</h2>
-  <p>Go to Upload and choose your picture!
+    <h2>No image ...</h2>
+    <p>Go to Upload and choose your picture!</p>
 </div>
