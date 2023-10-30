@@ -1,7 +1,16 @@
 <div *ngIf="hasImage()" class="centered-content">
     <h2>Choose your pixelization ...</h2>
-    <form [formGroup]="amountForm">
-        <input type="range" id="amount" formControlName="amount" [min]="pixelMin" max="0" step="0.005" (change)="onUpdate()">
+    <form class="pixelate__form" [formGroup]="amountForm">
+        <input
+            type="range"
+            id="amount"
+            class="pixelate__form__input"
+            formControlName="amount"
+            [min]="pixelMin"
+            max="0"
+            step="0.005"
+            (change)="onUpdate()"
+        >
     </form>
 
     <app-canvas-pixelate

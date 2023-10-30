@@ -15,11 +15,9 @@
     </div>
 </div>
 
-<mat-progress-spinner
-    *ngIf="loaded === false"
-    [mode]="loadingMode"
-    [value]="progress"
-></mat-progress-spinner>
+<p *ngIf="loaded === false">
+    Loading...
+</p>
 
 <div *ngIf="!hasImage">
     <h2>No image ...</h2>
