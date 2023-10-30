@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Collection } from '../models/collection';
 import { CollectionService } from '../services/collection.service';
 import { Observable } from 'rxjs';
-import { MatListModule } from '@angular/material/list';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
+import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
 
 @Component({

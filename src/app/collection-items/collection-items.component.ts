@@ -3,22 +3,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { Collection } from '../models/collection';
 import { Item } from '../models/item';
 import { CollectionService } from '../services/collection.service';
 import { ItemService } from '../services/item.service';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card';
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
+import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 
 @Component({
     selector: 'app-collection-items',
@@ -34,14 +34,14 @@ export class CollectionItemsComponent implements OnInit {
     private _addMany: boolean = false;
     private _loadedContent: number = null;
     private _contentLength: number = null;
-    collectionForm: FormGroup;
+    collectionForm: UntypedFormGroup;
 
     constructor(
         private route: ActivatedRoute,
         private collectionService: CollectionService,
         private itemService: ItemService,
         private router: Router,
-        private fb: FormBuilder
+        private fb: UntypedFormBuilder
     ) {}
 
     ngOnInit() {

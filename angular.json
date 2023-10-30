@@ -61,6 +61,14 @@
                 }
               ],
               "serviceWorker": true
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           }
         },
@@ -72,6 +80,9 @@
           "configurations": {
             "production": {
               "browserTarget": "pixelizator:build:production"
+            },
+            "development": {
+              "browserTarget": "pixelizator:build:development"
             }
           }
         },
@@ -128,6 +139,5 @@
         }
       }
     }
-  },
-  "defaultProject": "pixelizator"
+  }
 }

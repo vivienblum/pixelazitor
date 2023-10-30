@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item } from '../models/item';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatListModule } from '@angular/material/list';
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 import { ItemService } from '../services/item.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { MatDividerModule } from '@angular/material/divider';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 
@@ -22,12 +22,12 @@ export class ItemComponent implements OnInit {
     private _item: Item;
     private _loading: boolean = null;
     private _edit: boolean = false;
-    itemForm: FormGroup;
+    itemForm: UntypedFormGroup;
 
     constructor(
         private route: ActivatedRoute,
         private itemService: ItemService,
-        private fb: FormBuilder
+        private fb: UntypedFormBuilder
     ) {}
 
     @Input()

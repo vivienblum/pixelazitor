@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../models/item';
-import { MatListModule } from '@angular/material/list';
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { MatDividerModule } from '@angular/material/divider';

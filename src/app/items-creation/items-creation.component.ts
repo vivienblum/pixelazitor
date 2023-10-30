@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { Item } from '../models/item';
@@ -13,12 +13,12 @@ import { Item } from '../models/item';
     styleUrls: ['./items-creation.component.scss'],
 })
 export class ItemsCreationComponent implements OnInit {
-    itemsForm: FormGroup;
+    itemsForm: UntypedFormGroup;
     selectedFiles: FileList;
 
     @Output() handleCreateItems: EventEmitter<FormData[]> = new EventEmitter();
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: UntypedFormBuilder) {
         this.itemsForm = this.fb.group({
             images: ['', Validators.required],
         });

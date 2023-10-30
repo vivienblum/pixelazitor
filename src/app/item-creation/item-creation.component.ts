@@ -1,13 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
     FormControl,
-    FormGroup,
-    FormBuilder,
+    UntypedFormGroup,
+    UntypedFormBuilder,
     Validators,
 } from '@angular/forms';
 import { Item } from '../models/item';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 
 @Component({
     selector: 'app-item-creation',
@@ -15,12 +15,12 @@ import { MatButtonModule } from '@angular/material/button';
     styleUrls: ['./item-creation.component.scss'],
 })
 export class ItemCreationComponent implements OnInit {
-    itemForm: FormGroup;
+    itemForm: UntypedFormGroup;
     selectedFile = null;
 
     @Output() handleCreateItem: EventEmitter<any> = new EventEmitter();
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: UntypedFormBuilder) {
         this.itemForm = this.fb.group({
             name: ['', Validators.required],
             popularity: ['', Validators.required],
